@@ -8,7 +8,7 @@ public class EnemyLife : MonoBehaviour
 
     public Image enemyLife;
 
-    public float nowLife;
+    static public float nowLife;
 
     public float maxLife;
 
@@ -25,7 +25,7 @@ public class EnemyLife : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") {
-            nowLife -= 20;
+           //s nowLife -= 20;
         }
     }
 

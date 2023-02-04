@@ -7,8 +7,8 @@ public class MoverPersonaje : MonoBehaviour
 {
     public float velocidadMovimiento = 5;
     public float velocidadRotacion = 200.0f;    
-    public float velCorrer;
-    [SerializeField] GameObject BloqueoI;
+    public float velCorrer, tiempo;
+    [SerializeField] GameObject BloqueoI, arma;
     [SerializeField] Slider BloqueoS;
     [SerializeField] float TAtaque,Spam;
     public Slider stamina;
@@ -50,7 +50,7 @@ public class MoverPersonaje : MonoBehaviour
             //    run = false; hacer que el boleano solo sea uno de los 2 
             //}
         }
-            Debug.Log(run);
+            
         Bloqueo();
 
         Ataque();
@@ -140,13 +140,21 @@ public class MoverPersonaje : MonoBehaviour
         TAtaque += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
+            arma.SetActive(true);
+            StartCoroutine("Timer");
             if(TAtaque >= Spam)
             {
-            Debug.Log("Ataco");// poder realiar el daño cuando golpe al enemigo
                 TAtaque = 0;
             }
 
         }
+
+    }
+
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(tiempo);
+        arma.SetActive(false);
     }
 
 }
