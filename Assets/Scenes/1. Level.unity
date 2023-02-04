@@ -238,9 +238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcbd617406eb7b4784144ca910b4f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 10
+  velocidadMovimiento: 5
   velocidadRotacion: 200
   velCorrer: 0
+  camara: {fileID: 0}
   x: 0
   y: 0
 --- !u!54 &15559177
@@ -1016,7 +1017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &129484600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1108,6 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1160f062edc2c94ea5db9def0550960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiempo: 0
   Tronco: {fileID: 91622707}
 --- !u!1 &188254965
 GameObject:
