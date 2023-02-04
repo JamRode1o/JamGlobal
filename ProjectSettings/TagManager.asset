@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Guaro
-  - Arepa
+  - Menu
   layers:
   - Default
   - TransparentFX
