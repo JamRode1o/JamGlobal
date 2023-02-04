@@ -21,5 +21,4 @@ public class Blocking : MonoBehaviour
         yield return new WaitForSeconds(tiempo);
         Tronco.SetActive(true);
     }
-
 }

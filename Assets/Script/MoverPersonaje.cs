@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoverPersonaje : MonoBehaviour
 {
-    public float velocidadMovimiento = 10.0f;
+    public float velocidadMovimiento = 5;
     public float velocidadRotacion = 200.0f;    
     public float velCorrer;
-    [SerializeField] Camera camara;
-    Vector3 Camz, Camx;
+    [SerializeField] GameObject BloqueoI;
+    [SerializeField] Slider BloqueoS;
+    [SerializeField] float TAtaque,Spam;
+    public Slider stamina;
     //private Animator anim;
     public float x, y;
     Rigidbody rb;
     bool Movent;
+    public static bool run = false;
+
+    Vector3 vely, direccion;
 
     private void Start()
     {
@@ -23,14 +29,34 @@ public class MoverPersonaje : MonoBehaviour
     private void Update()
     {
         // hacer le modo berriondo 
-        if(Movent)
+        // que corre pero no se consume stamina y que pega mas duro
+        if (Movent)
+        {
             MoverPlayer();
+            if(run==true)
+                if(stamina.value > 0)
+                    Correr();
 
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if(stamina.value > 0)
+            {
+             run = true;
+            }
+            //else
+            //{
+            //    run = false; hacer que el boleano solo sea uno de los 2 
+            //}
+        }
+            Debug.Log(run);
         Bloqueo();
 
         Ataque();
         
-        Correr();
+             BloqueoS.value += Time.deltaTime * 0.2f;
+        
     }
 
     private void MoverPlayer()
@@ -42,12 +68,12 @@ public class MoverPersonaje : MonoBehaviour
         //transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
         // rb.velocity = new Vector3(0, 0, y * Time.deltaTime * velocidadMovimiento);
 
-        Vector3 vely = Vector3.zero;
+         vely = Vector3.zero;
 
         if(x != 0 || y!=0)
         {
-            Vector3 direcion = (transform.forward * y).normalized;
-            vely = direcion * velocidadMovimiento;
+            direccion = (transform.forward * y).normalized;
+            vely = direccion * velocidadMovimiento;
         }
  
 
@@ -64,17 +90,33 @@ public class MoverPersonaje : MonoBehaviour
         // organizar la velocidad y las cantidad del uso del correr
         if (Input.GetKey(KeyCode.Space))
         {
-            velocidadMovimiento = velCorrer;
-            if (y > 0)
+                stamina.value -= Time.deltaTime;
+            if(x != 0 || y != 0)
             {
-                //anim.SetBool("correr", true);
-                velCorrer = 20.0f;
+                vely = direccion * velCorrer;
+
+                vely.y = rb.velocity.y;
+                rb.velocity = vely;
             }
-            else
-            {
-                //anim.SetBool("correr", false);
-                velocidadMovimiento = 10.0f;
-            }
+            
+            //velocidadMovimiento = velCorrer;
+            //if (y > 0)
+            //{
+            //    //anim.SetBool("correr", true);
+            //    velCorrer = 8;
+            //}
+            //else
+            //{
+            //    //anim.SetBool("correr", false);
+            //    velocidadMovimiento = 5;
+            //}
+        }
+        else
+        {
+            vely = direccion * velocidadMovimiento;
+            vely.y = rb.velocity.y;
+            rb.velocity = vely;
+            run = false;
         }
     }
 
@@ -83,19 +125,27 @@ public class MoverPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Movent = false;
-            // realizar el bloqueo de manera visual y limitados a 4, que se regeneren con el tiempo
+            BloqueoI.gameObject.SetActive(true);
         }
         else
         {
             Movent = true;
+            BloqueoI.gameObject.SetActive(false);
+          //  BloqueoS.value += Time.deltaTime;
         }
     }
 
     void Ataque()
     {
+        TAtaque += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Ataco");// organizar que no lo puedeo spamear
+            if(TAtaque >= Spam)
+            {
+            Debug.Log("Ataco");// poder realiar el daño cuando golpe al enemigo
+                TAtaque = 0;
+            }
+
         }
     }
 
