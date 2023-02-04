@@ -24,7 +24,8 @@ public class Recolectable : MonoBehaviour
     {
 
         guaro.value = Guaro;
-        stamina.value += Time.deltaTime;
+        if(MoverPersonaje.run == false)
+            stamina.value += Time.deltaTime;
 
         for (int i = 0; i < Arepas; i++)
         {
