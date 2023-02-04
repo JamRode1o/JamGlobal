@@ -26,6 +26,8 @@ public class AiDiablo : MonoBehaviour {
     // Puntos de Spawn
     [SerializeField]
     private GameObject[] points;
+    [SerializeField]
+    private GameObject pointFire;
 
     // confirmar si esta o no en ataque
     private bool endAttack = true;
@@ -123,8 +125,8 @@ public class AiDiablo : MonoBehaviour {
     {
         print("voy a tirar fuego");
         agent.isStopped = true;
-        AudioSource.PlayClipAtPoint(fireSound, Camera.main.transform.position, 8f);
-        Instantiate(fire, points[1].transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(fireSound, Camera.main.transform.position, 0.1f);
+        Instantiate(fire, pointFire.transform.position, Quaternion.identity);
         anim.SetBool("FireBullet", false);
         currentState = BossState.GoToPlayer;
     }
