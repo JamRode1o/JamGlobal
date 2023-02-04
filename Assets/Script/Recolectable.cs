@@ -49,5 +49,12 @@ public class Recolectable : MonoBehaviour
             Guaro += 20;
             other.gameObject.SetActive(false);
         }
+
+        if(other.tag == "Fire")
+        {
+            Arepas = Arepas - 2;
+        }
+
+        
     }
 }
