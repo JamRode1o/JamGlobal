@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoverPersonaje : MonoBehaviour
 {
     public float velocidadMovimiento = 10.0f;
     public float velocidadRotacion = 200.0f;    
     public float velCorrer;
-    [SerializeField] Camera camara;
-    Vector3 Camz, Camx;
+    [SerializeField] Slider BloqueoS;
+    [SerializeField] float TAtaque,Spam;
     //private Animator anim;
     public float x, y;
     Rigidbody rb;
@@ -31,6 +32,7 @@ public class MoverPersonaje : MonoBehaviour
         Ataque();
         
         Correr();
+        BloqueoS.value += Time.deltaTime;
     }
 
     private void MoverPlayer()
@@ -83,19 +85,29 @@ public class MoverPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Movent = false;
+            BloqueoS.gameObject.SetActive(true);
+
             // realizar el bloqueo de manera visual y limitados a 4, que se regeneren con el tiempo
         }
         else
         {
             Movent = true;
+            BloqueoS.gameObject.SetActive(false);
+          //  BloqueoS.value += Time.deltaTime;
         }
     }
 
     void Ataque()
     {
+        TAtaque += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Ataco");// organizar que no lo puedeo spamear
+            if(TAtaque >= Spam)
+            {
+            Debug.Log("Ataco");// poder realiar el daño cuando golpe al enemigo
+                TAtaque = 0;
+            }
+
         }
     }
 

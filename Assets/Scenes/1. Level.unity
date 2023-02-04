@@ -243,7 +243,9 @@ MonoBehaviour:
   velocidadMovimiento: 5
   velocidadRotacion: 200
   velCorrer: 0
-  camara: {fileID: 0}
+  BloqueoS: {fileID: 157199877}
+  TAtaque: 0
+  Spam: 1.2
   x: 0
   y: 0
 --- !u!54 &15559177
@@ -1525,7 +1527,7 @@ GameObject:
   - component: {fileID: 157199876}
   - component: {fileID: 157199877}
   m_Layer: 5
-  m_Name: Stamina (1)
+  m_Name: Bloqueo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,7 +1603,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 4
   m_WholeNumbers: 1
-  m_Value: 4
+  m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4028,7 +4030,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0.00050354004, y: 0}
   m_SizeDelta: {x: -0.00099182, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8315,8 +8317,8 @@ RectTransform:
   m_Father: {fileID: 324999287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
