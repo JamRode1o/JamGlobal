@@ -116,6 +116,7 @@ public class AiDiablo : MonoBehaviour {
     void SpawnFire()
     {
         print("proceso de fuego");
+        anim.SetBool("Walk", false);
         agent.isStopped = true;
         anim.SetBool("FireBullet", true);
 
@@ -156,6 +157,7 @@ public class AiDiablo : MonoBehaviour {
     {
         print("voy donde el player");
         agent.isStopped = false;
+        anim.SetBool("Walk", true);
         anim.SetBool("FireBullet", false);
        // AudioSource.PlayClipAtPoint(moveBossSound, Camera.main.transform.position, 0.2f);
         //anim.SetBool("Stop", false);
