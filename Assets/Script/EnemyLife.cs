@@ -15,6 +15,11 @@ public class EnemyLife : MonoBehaviour
     void Update()
     {
         enemyLife.fillAmount = nowLife / maxLife;
+
+        if(nowLife <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -23,4 +28,5 @@ public class EnemyLife : MonoBehaviour
             nowLife -= 20;
         }
     }
+
 }
