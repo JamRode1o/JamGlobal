@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Recolectable : MonoBehaviour
 {
-    [SerializeReference] Image arepa;
+    [SerializeReference] Image[] arepa;
     [SerializeReference] Slider guaro, stamina;
-    [SerializeField] int Arepas;
+    [SerializeField] int Arepas = 10;
     [SerializeField] float Guaro, Stamina;
     [SerializeField] TextMeshProUGUI GuaroT, StaminaT;
 
@@ -23,24 +23,30 @@ public class Recolectable : MonoBehaviour
     void Update()
     {
 
-        guaro.value += Guaro;
+        guaro.value = Guaro;
+        stamina.value += Time.deltaTime;
 
-
+        for (int i = 0; i < Arepas; i++)
+        {
+            arepa[i].gameObject.SetActive(true);         
+        }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Arepa")       
-            Arepas++;
 
-        if (collision.gameObject.tag == "Guaro")
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Arepa")
+        {
+            if(Arepas < 20)
+            {
+                Arepas++;
+                other.gameObject.SetActive(false);
+            }
+        }
+
+        if (other.tag == "Guaro")
         {
             Guaro += 20;
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
-     
-
-        if (collision.gameObject.tag == "Stamina")
-            Stamina += 10;// rellenar con el tiempo
-
     }
 }
