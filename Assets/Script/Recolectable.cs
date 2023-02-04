@@ -8,7 +8,7 @@ public class Recolectable : MonoBehaviour
 {
     [SerializeReference] Image[] arepa;
     [SerializeReference] Slider guaro, stamina;
-    [SerializeField] int Arepas = 10;
+    public static int Arepas = 10;
     [SerializeField] float Guaro, Stamina;
     [SerializeField] TextMeshProUGUI GuaroT, StaminaT;
 

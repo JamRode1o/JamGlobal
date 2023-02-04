@@ -12,6 +12,7 @@ public class MoverPersonaje : MonoBehaviour
     //private Animator anim;
     public float x, y;
     Rigidbody rb;
+    bool Movent;
 
     private void Start()
     {
@@ -21,7 +22,14 @@ public class MoverPersonaje : MonoBehaviour
 
     private void Update()
     {
-        MoverPlayer();
+        // hacer le modo berriondo 
+        if(Movent)
+            MoverPlayer();
+
+        Bloqueo();
+
+        Ataque();
+        
         Correr();
     }
 
@@ -52,6 +60,8 @@ public class MoverPersonaje : MonoBehaviour
     }
     private void Correr()
     {
+
+        // organizar la velocidad y las cantidad del uso del correr
         if (Input.GetKey(KeyCode.Space))
         {
             velocidadMovimiento = velCorrer;
@@ -65,6 +75,27 @@ public class MoverPersonaje : MonoBehaviour
                 //anim.SetBool("correr", false);
                 velocidadMovimiento = 10.0f;
             }
+        }
+    }
+
+    void Bloqueo()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            Movent = false;
+            // realizar el bloqueo de manera visual y limitados a 4, que se regeneren con el tiempo
+        }
+        else
+        {
+            Movent = true;
+        }
+    }
+
+    void Ataque()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Ataco");// organizar que no lo puedeo spamear
         }
     }
 
