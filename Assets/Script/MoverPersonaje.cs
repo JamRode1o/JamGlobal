@@ -18,6 +18,7 @@ public class MoverPersonaje : MonoBehaviour
     bool Movent;
     public static bool run = false;
 
+    float time = 6;
     Vector3 vely, direccion;
 
     public AudioSource son;
@@ -41,6 +42,7 @@ public class MoverPersonaje : MonoBehaviour
                     Correr();
 
         }
+        time += Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -177,7 +179,11 @@ public class MoverPersonaje : MonoBehaviour
                 TAtaque = 0;
             }
             anim.SetBool("Atk", true);
-            son.PlayOneShot(sonidoAtk[rando()]);
+            if(time > 5)
+            {
+                son.PlayOneShot(sonidoAtk[rando()]);
+                time = 0;
+            }
         }
         else
         {
