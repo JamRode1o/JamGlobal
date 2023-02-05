@@ -109,9 +109,9 @@ GameObject:
   - component: {fileID: 2110967629343135407}
   - component: {fileID: 2110967629343135404}
   - component: {fileID: 2110967629343135405}
-  - component: {fileID: 2110967629343135402}
   - component: {fileID: 2110967629343135403}
   - component: {fileID: 2110967629343135406}
+  - component: {fileID: -8652100257072168353}
   m_Layer: 0
   m_Name: Enemy Emely 1
   m_TagString: Enemy
@@ -200,30 +200,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2110967629343135402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110967629343135401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 483862bdbe9c7c74aabbe8170a75e8b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dectectionRatio: 10
-  capaDelJugador:
-    serializedVersion: 2
-    m_Bits: 8
-  jugador: {fileID: 0}
-  caminar: 7
-  correr: 10
-  patrolSpeed: 7
-  changeTargetDistance: 0.34
-  PuntosPatrulla:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!54 &2110967629343135403
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -254,6 +230,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLife: {fileID: 2110967629659263911}
   maxLife: 100
+--- !u!114 &-8652100257072168353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110967629343135401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a441e0ae44f2bcf48be6c4e83f0ea344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dectectionRatio: 10
+  capaDelJugador:
+    serializedVersion: 2
+    m_Bits: 8
+  jugador: {fileID: 0}
+  caminar: 7
+  correr: 10
 --- !u!1001 &1024970232276481960
 PrefabInstance:
   m_ObjectHideFlags: 0
