@@ -25,8 +25,6 @@ public class EnemyLife : MonoBehaviour
         {
            // this.gameObject.SetActive(false);
         }
-
-        Debug.Log(nowLife);
     }
 
  

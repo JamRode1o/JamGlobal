@@ -27,13 +27,13 @@ public class Recolectable : MonoBehaviour
         }
 
 
-        for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
-        {
-            arepa[i].gameObject.SetActive(true);
-            int var = i;
-            // arepa[i + 1].gameObject.SetActive(false);
-            //arepa.RemoveAt(var);
-        }
+        //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
+        //{
+        //    arepa[i].gameObject.SetActive(true);
+        //    int var = i;
+        //    // arepa[i + 1].gameObject.SetActive(false);
+        //    //arepa.RemoveAt(var);
+        //}
 
         //for (int i = 0; i < Arepas; i++)
         //{

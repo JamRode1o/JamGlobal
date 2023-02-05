@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     public event Action DamageTaken;
     public event Action HealthUpgraded;
 
+    public  float fuerza, time;
+    bool golpe = false;
 
     public int Jealth
     {
@@ -40,7 +42,6 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void TakeDamage()
@@ -79,11 +80,20 @@ public class Health : MonoBehaviour
             HealthUpgraded();
         }
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            TakeDamage();
+            if (!golpe)
+            {
+                TakeDamage();
+                golpe = true;
+                Vector3 dir = (other.transform.position - transform.position).normalized;
+                other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
+            }
+                StartCoroutine("Llamado");
         }
         if (other.tag == "Arepa")
         {
@@ -96,5 +106,10 @@ public class Health : MonoBehaviour
 
     }
 
+    IEnumerator Llamado()
+    {
+        yield return new WaitForSeconds(0.5f);
+        golpe = false;
+    }
 }
 
