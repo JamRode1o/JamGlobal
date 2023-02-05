@@ -14,7 +14,8 @@ public class Perder : MonoBehaviour
         {
             //perder.SetActive(true);
             //Pausa();
-            Debug.Log("Te Atrapeee");
+            Recolectable.Arepas--;
+            Debug.Log("colisiono");
         }
     }
     public void Pausa()

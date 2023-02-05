@@ -22,11 +22,6 @@ public class EnemyLife : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player") {
-           //s nowLife -= 20;
-        }
-    }
+ 
 
 }
