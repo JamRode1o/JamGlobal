@@ -1142,6 +1142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c698851e8b2bd44a1dd0fd82c02f98, type: 3}
+--- !u!1 &36285160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01c698851e8b2bd44a1dd0fd82c02f98, type: 3}
+  m_PrefabInstance: {fileID: 36285159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &43469576
 Mesh:
   m_ObjectHideFlags: 0
@@ -14526,6 +14531,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c698851e8b2bd44a1dd0fd82c02f98, type: 3}
+--- !u!1 &734539830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01c698851e8b2bd44a1dd0fd82c02f98, type: 3}
+  m_PrefabInstance: {fileID: 734539829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &734539831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734539830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.901936, y: 3.6236835, z: 9.782916}
+  m_Center: {x: -0.10794845, y: 1.3118417, z: -0.41228518}
 --- !u!4 &734610495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ebeaa89b1888325458058feefbb36d5c, type: 3}
@@ -15886,6 +15909,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 01c698851e8b2bd44a1dd0fd82c02f98, type: 3}
   m_PrefabInstance: {fileID: 36285159}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &811026557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36285160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.97, y: 2.95, z: 12.47}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &812332366
 Mesh:
   m_ObjectHideFlags: 0
@@ -25405,13 +25441,13 @@ Transform:
   - {fileID: 1054859460}
   - {fileID: 663684954}
   - {fileID: 1063736781}
-  - {fileID: 582720585}
   - {fileID: 3211200}
   - {fileID: 1904468087}
-  - {fileID: 8201294}
+  - {fileID: 582720585}
   - {fileID: 706525240}
-  - {fileID: 1183207338}
+  - {fileID: 8201294}
   - {fileID: 1093197461}
+  - {fileID: 1183207338}
   - {fileID: 2061547474}
   - {fileID: 1832390074}
   - {fileID: 1410642816}
