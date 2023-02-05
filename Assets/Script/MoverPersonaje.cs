@@ -114,11 +114,12 @@ public class MoverPersonaje : MonoBehaviour
 
                 vely.y = rb.velocity.y;
                 rb.velocity = vely;
-                anim.SetBool("Correr", true);
+                 anim.SetBool("Run", true);
+                anim.SetTrigger("Correr");
             }
             else
             {
-                anim.SetBool("Correr", false);
+               // anim.SetBool("Correr", false);
             }
             
             //velocidadMovimiento = velCorrer;
@@ -168,10 +169,13 @@ public class MoverPersonaje : MonoBehaviour
             {
                 TAtaque = 0;
             }
-
+            anim.SetBool("Atk", true);
             son.PlayOneShot(sonidoAtk[rando()]);
         }
-
+        else
+        {
+            anim.SetBool("Atk", false);
+        }
     }
 
     IEnumerator Timer()
