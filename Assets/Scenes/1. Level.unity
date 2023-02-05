@@ -252,6 +252,7 @@ MonoBehaviour:
   TAtaque: 0
   Spam: 1.2
   stamina: {fileID: 434436786}
+  anim: {fileID: 0}
   x: 0
   y: 0
 --- !u!54 &15559177

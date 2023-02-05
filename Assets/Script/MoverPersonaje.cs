@@ -12,7 +12,7 @@ public class MoverPersonaje : MonoBehaviour
     [SerializeField] Slider BloqueoS;
     [SerializeField] float TAtaque,Spam;
     public Slider stamina;
-    //private Animator anim;
+    public Animator anim;
     public float x, y;
     Rigidbody rb;
     bool Movent;
@@ -22,7 +22,7 @@ public class MoverPersonaje : MonoBehaviour
 
     private void Start()
     {
-        //anim = GetComponent<Animator>();
+       // anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -74,6 +74,11 @@ public class MoverPersonaje : MonoBehaviour
         {
             direccion = (transform.forward * y).normalized;
             vely = direccion * velocidadMovimiento;
+            anim.SetBool("Caminar", true);
+        }
+        else
+        {
+            anim.SetBool("Caminar", false);
         }
  
 
@@ -97,6 +102,11 @@ public class MoverPersonaje : MonoBehaviour
 
                 vely.y = rb.velocity.y;
                 rb.velocity = vely;
+                anim.SetBool("Correr", true);
+            }
+            else
+            {
+                anim.SetBool("Correr", false);
             }
             
             //velocidadMovimiento = velCorrer;
