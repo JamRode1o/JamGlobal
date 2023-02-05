@@ -26,6 +26,7 @@ public class Recolectable : MonoBehaviour
               stamina.value += Time.deltaTime;                   
         }
 
+<<<<<<< Updated upstream
         for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
         {
             arepa[i].gameObject.SetActive(true);
@@ -33,22 +34,28 @@ public class Recolectable : MonoBehaviour
             // arepa[i + 1].gameObject.SetActive(false);
             //arepa.RemoveAt(var);
         }
+=======
+        //for (int i = 0; i < Arepas; i++)
+        //{
+        //    arepa[i].gameObject.SetActive(true);         
+        //}
+>>>>>>> Stashed changes
 
 
-        if (Arepas <= 0)
-            perder.SetActive(true);
+        //if (Arepas <= 0)
+        //    perder.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Arepa")
-        {
-            if(Arepas < 20)
-            {
-                Arepas++;
-                other.gameObject.SetActive(false);
-            }
-        }
+        //if(other.tag == "Arepa")
+        //{
+        //    if(Arepas < 20)
+        //    {
+        //        Arepas++;
+        //        other.gameObject.SetActive(false);
+        //    }
+        //}
 
         if (other.tag == "Guaro")
         {
