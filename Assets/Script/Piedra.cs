@@ -7,6 +7,7 @@ public class Piedra : MonoBehaviour
 
     Rigidbody rb;
     [SerializeField] float fuerza, altura;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +18,16 @@ public class Piedra : MonoBehaviour
     void Update()
     {
         //rb.AddForce(Vector3.forward * fuerza);
-
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
+        if(collision.gameObject.tag == "Respawn")
         {
             Destroy(this.gameObject);
         }
