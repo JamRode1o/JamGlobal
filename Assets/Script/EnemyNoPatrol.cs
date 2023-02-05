@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLogic : MonoBehaviour
+public class EnemyNoPatrol : MonoBehaviour
 {
 
     // Logica de si entra en el rango lo vea, persiga y toque
@@ -13,13 +13,14 @@ public class EnemyLogic : MonoBehaviour
     public float caminar;
     public float correr;
     //public Animator Anim;
-    public Transform[] PuntosPatrulla;
+    //public Transform[] PuntosPatrulla;
     //
 
     // Se usa con los metodos MoveToTarget y GetNextTarget
-    public float patrolSpeed = 0f;
-    public float changeTargetDistance = 0.1f;
+    //public float patrolSpeed = 0f;
+    //public float changeTargetDistance = 0.1f;
     int currentTarget = 0;
+    //public Transform[] PuntosPatrulla;
     //
 
     // Start is called before the first frame update
@@ -31,12 +32,7 @@ public class EnemyLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        alerta(); 
-
-        if (MoveToTarget())
-        {            
-            currentTarget = GetNextTarget();           
-        }       
+        alerta();
     }
 
     // Logica de si entra en el rango lo vea, persiga y toque  
@@ -65,39 +61,39 @@ public class EnemyLogic : MonoBehaviour
           Gizmos.DrawWireSphere(transform.position, dectectionRatio);
       }
     
-    private bool MoveToTarget()
-    {
-        Vector3 distanceVector = PuntosPatrulla[currentTarget].position - transform.position;
-        if (distanceVector.magnitude < changeTargetDistance)
-        {
-            transform.LookAt(PuntosPatrulla[currentTarget]);            
-            //Anim.SetBool("caminar", true);            
-            return true;
-        }
+    // private bool MoveToTarget()
+    // {
+    //     //Vector3 distanceVector = PuntosPatrulla[currentTarget].position - transform.position;
+    //     //if (distanceVector.magnitude < changeTargetDistance)
+    //     //{
+    //     //    transform.LookAt(PuntosPatrulla[currentTarget]);            
+    //         //Anim.SetBool("caminar", true);            
+    //      //   return true;
+    //     //}
+    //
+    //    // Vector3 velocityVector = distanceVector.normalized;
+    //     //transform.position += velocityVector * patrolSpeed * Time.deltaTime;        
+    //     //Anim.SetBool("caminar", false);
+    //     //return false;
+    // }
 
-        Vector3 velocityVector = distanceVector.normalized;
-        transform.position += velocityVector * patrolSpeed * Time.deltaTime;        
-        //Anim.SetBool("caminar", false);
-        return false;
-    }
+    // private int GetNextTarget()
+    // {
+    //     currentTarget++;
+    //     new WaitForSeconds(3f);
+    //     if (currentTarget >= PuntosPatrulla.Length)
+    //     {
+    //         currentTarget = 0;
+    //     }
+    //     return currentTarget;
+    // }
 
-    private int GetNextTarget()
-    {
-        currentTarget++;
-        new WaitForSeconds(3f);
-        if (currentTarget >= PuntosPatrulla.Length)
-        {
-            currentTarget = 0;
-        }
-        return currentTarget;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Recolectable.Arepas--;
-            
-        }
-    }
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.tag == "Player")
+    //     {
+    //         Recolectable.Arepas--;
+    //         
+    //     }
+    // }
 }
