@@ -5918,6 +5918,10 @@ PrefabInstance:
       propertyPath: BloqueoS
       value: 
       objectReference: {fileID: 162973652}
+    - target: {fileID: 6343991806124745815, guid: 73374bb1d5e879d469ccac76391ad5d3, type: 3}
+      propertyPath: velocidadMovimiento
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6343991806124745819, guid: 73374bb1d5e879d469ccac76391ad5d3, type: 3}
       propertyPath: m_RootOrder
       value: 9
