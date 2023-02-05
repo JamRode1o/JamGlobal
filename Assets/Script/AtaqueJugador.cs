@@ -6,24 +6,31 @@ public class AtaqueJugador : MonoBehaviour
 {
 
     [SerializeField] float fuerza;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static bool BerriondoMode;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Q))
+        {
+            Recolectable.Guaro -= Time.deltaTime;
+            BerriondoMode = true;
+        }
+        else
+        {
+            BerriondoMode = false;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            EnemyLife.nowLife -= 20;
-            Debug.Log("ME Dio");
+            EnemyLife.nowLife = -20;
+
+            if(BerriondoMode)
+                EnemyLife.nowLife = -35;
+
             Vector3 dir = (other.transform.position - transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
             other.GetComponent<EnemyLogic>().enabled = false;
