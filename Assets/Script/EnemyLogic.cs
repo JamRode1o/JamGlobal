@@ -88,8 +88,17 @@ public class EnemyLogic : MonoBehaviour
         new WaitForSeconds(3f);
         if (currentTarget >= PuntosPatrulla.Length)
         {
-            currentTarget = 0;            
+            currentTarget = 0;
         }
         return currentTarget;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Recolectable.Arepas--;
+            
+        }
     }
 }

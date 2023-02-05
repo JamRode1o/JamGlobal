@@ -7,6 +7,7 @@ public class AtaqueJugador : MonoBehaviour
 
     [SerializeField] float fuerza;
     public static bool BerriondoMode;
+    float time;
 
     private void Update()
     {
@@ -20,20 +21,24 @@ public class AtaqueJugador : MonoBehaviour
             BerriondoMode = false;
         }
 
+        time = Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            EnemyLife.nowLife = -20;
+            EnemyLife.nowLife -= 20;
 
+            
             if(BerriondoMode)
-                EnemyLife.nowLife = -35;
+                EnemyLife.nowLife -= 35;
 
             Vector3 dir = (other.transform.position - transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
-            other.GetComponent<EnemyLogic>().enabled = false;
+            
+            //other.GetComponent<EnemyLogic>().enabled = false;
         }
     }
+
 }
