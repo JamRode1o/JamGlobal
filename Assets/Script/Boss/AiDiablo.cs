@@ -34,7 +34,9 @@ public class AiDiablo : MonoBehaviour {
 
     private float distance;
 
+    private float speedSave;
 
+    private int cantGobblins = 0;
 
     public enum BossState { GoToPlayer, DistancePlayer, SpawnGoblins, SpawnAirBullets, SpawnFire, SkipBoss }
 
@@ -44,15 +46,17 @@ public class AiDiablo : MonoBehaviour {
     void Start()
     {
         anim = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(WaitAndEjecute(2f, randomAtack));
+        speedSave = agent.speed;
     }
 
     // Update is called once per frame
     private void Update()
     {
-       
 
+        transform.LookAt(target);
 
         distance = Vector2.Distance(target.position, transform.position);
 
@@ -116,7 +120,9 @@ public class AiDiablo : MonoBehaviour {
     void SpawnFire()
     {
         print("proceso de fuego");
+        anim.SetBool("Walk", false);
         agent.isStopped = true;
+        anim.SetBool("Stop", true);
         anim.SetBool("FireBullet", true);
 
     }
@@ -124,7 +130,6 @@ public class AiDiablo : MonoBehaviour {
     void SpawnFireAnim()
     {
         print("voy a tirar fuego");
-        agent.isStopped = true;
         AudioSource.PlayClipAtPoint(fireSound, Camera.main.transform.position, 0.1f);
         Instantiate(fire, pointFire.transform.position, Quaternion.identity);
         anim.SetBool("FireBullet", false);
@@ -138,13 +143,56 @@ public class AiDiablo : MonoBehaviour {
 
     void SpawnGoblins()
     {
-        print("spawn Duendes");
-        for (int i = 0; i > points.Length; i++)
+        if (cantGobblins >= 6)
         {
-            endAttack = false;
-            Instantiate(Goblins, points[i].transform.position, Quaternion.identity);
-            ChangeAttack();
+            print("No generaré más enanos");
+            randomAtack();
         }
+        else
+        {
+            anim.SetBool("FireBullet", false);
+            agent.isStopped = true;
+            anim.SetBool("spawnGoblins", true);
+        }
+        
+    }
+
+    void MeleeAttack()
+    {
+        agent.isStopped = true;
+        anim.SetBool("Melee", true);
+    }
+
+    void MeleeAttackAnim()
+    {
+        
+        anim.SetBool("Stop", false);
+        agent.isStopped = false;
+        
+    }
+
+    void MeleeAttackEnd()
+    {
+        anim.SetBool("Melee", false);
+        callTimer(1f);
+    }
+
+
+
+    public void SpawnGoblinsAnim()
+    {
+        
+        print("spawn Duendes");
+        
+            for (int i = 0; i < points.Length; i++)
+            {
+                endAttack = false;
+                Instantiate(Goblins, points[i].transform.position, Quaternion.identity);
+                ChangeAttack();
+                cantGobblins++;
+            }
+        
+        anim.SetBool("spawnGoblins", false);
     }
 
     void EndingAttack()
@@ -154,18 +202,20 @@ public class AiDiablo : MonoBehaviour {
 
     void GoToPlayer()
     {
+        anim.SetBool("Stop", false);
         print("voy donde el player");
         agent.isStopped = false;
+        anim.SetBool("Walk", true);
         anim.SetBool("FireBullet", false);
        // AudioSource.PlayClipAtPoint(moveBossSound, Camera.main.transform.position, 0.2f);
-        //anim.SetBool("Stop", false);
+        
         agent.SetDestination(target.position);
     }
 
     void DistancePlayer()
     {
         agent.isStopped = true;
-      //  anim.SetBool("Stop", true);
+        anim.SetBool("Stop", true);
         currentState = BossState.SpawnFire;
 
     }
@@ -173,6 +223,8 @@ public class AiDiablo : MonoBehaviour {
     IEnumerator WaitAndEjecute(float time, Action action)
     {
         Debug.Log("estoy dentro de waitAndEjecute");
+        agent.isStopped = true;
+        anim.SetBool("Stop", true);
         yield return new WaitForSecondsRealtime(time);
         action();
     }
@@ -181,7 +233,7 @@ public class AiDiablo : MonoBehaviour {
     {
         Debug.Log("Estoy en el random Attack");
         
-            int random = UnityEngine.Random.Range(0, 3);
+            int random = UnityEngine.Random.Range(0, 4);
 
             if (random == 0)
             {
@@ -195,12 +247,12 @@ public class AiDiablo : MonoBehaviour {
             {
                 currentState = BossState.SpawnGoblins;
             }
-            else if (random == 3)
+            else if (random >= 3)
             {
                 currentState = BossState.GoToPlayer;
             }
 
-            callTimer(4f);
+            callTimer(2f);
         
        
         
@@ -208,6 +260,13 @@ public class AiDiablo : MonoBehaviour {
 
     void callTimer(float time)
     {
-        StartCoroutine(WaitAndEjecute(time, randomAtack));
+        if (distance <= 2f)
+        {
+            MeleeAttack();
+        }
+        else
+        {
+            StartCoroutine(WaitAndEjecute(time, randomAtack));
+        }
     }
 }
