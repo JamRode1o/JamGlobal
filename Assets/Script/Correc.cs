@@ -18,6 +18,6 @@ public class Correc : MonoBehaviour
         //    transform.Rotate(0, 0, 0);
         //if(transform.rotation.y< -10)
         //    transform.Rotate(0, 0, 0);
-        transform.rotation = Quaternion(0, 0, 0, 0);
+      //  transform.rotation = Quaternion(0, 0, 0, 0);
     }
 }
