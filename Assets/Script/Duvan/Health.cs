@@ -88,6 +88,7 @@ public class Health : MonoBehaviour
         {
             if (!golpe)
             {
+                
                 TakeDamage();
                 golpe = true;
                 Vector3 dir = (other.transform.position - transform.position).normalized;

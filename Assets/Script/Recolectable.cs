@@ -16,6 +16,9 @@ public class Recolectable : MonoBehaviour
 
     public static int Arepas = 10;
 
+    public AudioSource son;
+    public AudioClip[] sonidos;
+
 
     void Update()
     {
@@ -45,6 +48,11 @@ public class Recolectable : MonoBehaviour
         //if (Arepas <= 0)
         //    perder.SetActive(true);
     }
+    int rando()
+    {
+        int tem = Random.Range(0, sonidos.Length);
+        return tem;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -56,6 +64,11 @@ public class Recolectable : MonoBehaviour
         //        other.gameObject.SetActive(false);
         //    }
         //}
+
+        if (other.tag == "Enemy")
+        {
+            son.PlayOneShot(sonidos[rando()]);
+        }
 
         if (other.tag == "Guaro")
         {

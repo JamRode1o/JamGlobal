@@ -20,6 +20,9 @@ public class MoverPersonaje : MonoBehaviour
 
     Vector3 vely, direccion;
 
+    public AudioSource son;
+    public AudioClip[] sonidoAtk;
+
     private void Start()
     {
        // anim = GetComponent<Animator>();
@@ -89,6 +92,12 @@ public class MoverPersonaje : MonoBehaviour
 
         
     }
+
+    int rando()
+    {
+        int tem = Random.Range(0, sonidoAtk.Length);
+        return tem;
+    }
     private void Correr()
     {
 
@@ -157,6 +166,7 @@ public class MoverPersonaje : MonoBehaviour
                 TAtaque = 0;
             }
 
+            son.PlayOneShot(sonidoAtk[rando()]);
         }
 
     }

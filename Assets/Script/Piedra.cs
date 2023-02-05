@@ -19,4 +19,12 @@ public class Piedra : MonoBehaviour
         //rb.AddForce(Vector3.forward * fuerza);
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
