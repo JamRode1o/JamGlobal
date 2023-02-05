@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public static Health instance;
 
     public int maxHealth;
-    public int playerHealth;
+    public static int playerHealth;
 
     public event Action DamageTaken;
     public event Action HealthUpgraded;

@@ -45,8 +45,8 @@ public class Recolectable : MonoBehaviour
 
 
 
-        //if (Arepas <= 0)
-        //    perder.SetActive(true);
+        if (Health.playerHealth <= 0)
+            perder.SetActive(true);
     }
     int rando()
     {
