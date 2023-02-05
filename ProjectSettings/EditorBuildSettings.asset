@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/0. Main Menu.unity
     guid: cb6eaddceee2e2245af152d0d66d3d42
   - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 50c4bc97751078241a34e3dc593b8364
-  - enabled: 1
-    path: Assets/Scenes/1. Level Kevin.unity
-    guid: 6bfa8f1eecaaee949a8080170cc09059
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Perder K.unity
     guid: 2af877dfaab6c384cb970f6ef1696b30
+  - enabled: 1
+    path: Assets/Scenes/Granja 1.unity
+    guid: a1305c8d879f4f949af30d0f379c6cd9
   m_configObjects: {}
