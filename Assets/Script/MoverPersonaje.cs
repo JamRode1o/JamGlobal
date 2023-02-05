@@ -77,7 +77,10 @@ public class MoverPersonaje : MonoBehaviour
         {
             direccion = (transform.forward * y).normalized;
             vely = direccion * velocidadMovimiento;
-            anim.SetBool("Caminar", true);
+            if(Input.GetKey(KeyCode.Space))
+                anim.SetBool("Caminar", false);
+            else
+                anim.SetBool("Caminar", true);
         }
         else
         {
