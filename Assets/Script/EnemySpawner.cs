@@ -10,41 +10,27 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemy;
     public Transform location;
-    public float spawnTime;
-    public float randomSpawnTime;
-    private float spawnerTimer;
+    private float repeatRate = 5.0f;
     //public Transform target;
 
     void Start()
     {
-        enemy = GameObject.FindWithTag("Enemy");
-       // ResetSpawnerTime();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //spawnerTimer -= Time.deltaTime;
-        //if (spawnerTimer <= 0.0f)
-        {
-            //Instantiate(enemy, location.position, Quaternion.identity);
-           // ResetSpawnerTime();
-        }
-
-    }
-
-    void ResetSpawnerTime()
-    {
-        spawnerTimer = (float)(spawnTime + Random.Range(0, randomSpawnTime * 100) / 100.0);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Instantiate(enemy, location.position, Quaternion.identity);
-            this.gameObject.SetActive(false);
-        }
-            throw new NotImplementedException();
+            InvokeRepeating("EnemiSpawner", 0.5f, repeatRate);
+            Destroy(gameObject, 5);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        } 
+    }
+
+    void EnemiSpawner()
+    {
+        Instantiate(enemy, location.position, location.rotation);
     }
 }
