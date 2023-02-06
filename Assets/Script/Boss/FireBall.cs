@@ -16,7 +16,7 @@ public class FireBall : MonoBehaviour
     }
     float Rando()
     {
-        float tem = Random.Range(1, f);
+        float tem = Random.Range(3f, 5f);
         return tem;
     }
 
