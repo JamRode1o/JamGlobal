@@ -22,7 +22,7 @@ public class EnemyRango : MonoBehaviour
     
     void Update()
     {
-        Detector();
+       Detector();
         time += Time.deltaTime;
     }
 
