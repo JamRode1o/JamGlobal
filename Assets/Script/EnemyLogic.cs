@@ -13,14 +13,13 @@ public class EnemyLogic : MonoBehaviour
     public float caminar;
     public float correr;
     //public Animator Anim;
-    //public Transform[] PuntosPatrulla;
+    public Transform[] PuntosPatrulla;
     //
 
     // Se usa con los metodos MoveToTarget y GetNextTarget
     public float patrolSpeed = 0f;
     public float changeTargetDistance = 0.1f;
     int currentTarget = 0;
-    public Transform[] PuntosPatrulla;
     //
 
     // Start is called before the first frame update
@@ -88,8 +87,17 @@ public class EnemyLogic : MonoBehaviour
         new WaitForSeconds(3f);
         if (currentTarget >= PuntosPatrulla.Length)
         {
-            currentTarget = 0;            
+            currentTarget = 0;
         }
         return currentTarget;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Recolectable.Arepas--;
+            
+        }
     }
 }
