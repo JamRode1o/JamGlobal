@@ -5,28 +5,33 @@ using UnityEngine.UI;
 
 public class MoverPersonaje : MonoBehaviour
 {
-    public float velocidadMovimiento = 7 ;
-    public float velocidadRotacion = 200.0f;    
-    public float velCorrer, tiempo;
-    [SerializeField] GameObject BloqueoI, arma;
-    [SerializeField] Slider BloqueoS;
-    [SerializeField] float TAtaque,Spam;
-    public Slider stamina;
-    public Animator anim;
-    public float x, y;
-    Rigidbody rb;
-    bool Movent;
     public static bool run = false;
 
-    float time = 6;
-    Vector3 vely, direccion;
-
+    public Slider stamina;
+    public Animator anim;
     public AudioSource son;
     public AudioClip[] sonidoAtk;
 
+    public float velocidadMovimiento = 7;
+    public float velocidadRotacion = 200.0f;
+    public float velCorrer, tiempo;
+
+    [SerializeField] GameObject BloqueoI, arma;
+    [SerializeField] Slider BloqueoS;
+
+    [SerializeField] float TAtaque, Spam;
+
+    Rigidbody rb; 
+
+    float x, y;
+    bool Movent;
+    float time = 6;
+
+    Vector3 vely, direccion;
+
+
     private void Start()
     {
-       // anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -70,15 +75,15 @@ public class MoverPersonaje : MonoBehaviour
         y = Input.GetAxis("Vertical");
 
         transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento); 
-        rb.velocity = new Vector3(0, 0, y * Time.deltaTime * velocidadMovimiento);
+        //transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento); 
 
-         //vely = Vector3.zero;
+        // vely = Vector3.zero;
 
         if(x != 0 || y!=0)
         {
-            //direccion = (transform.forward * y).normalized;
-            //vely = direccion * velocidadMovimiento;
+            // rb.velocity = new Vector3(0, 0, y * Time.deltaTime * velocidadMovimiento);
+            direccion = (transform.forward * y).normalized;
+            vely = direccion * velocidadMovimiento;
             if(Input.GetKey(KeyCode.Space))
                 anim.SetBool("Caminar", false);
             else
@@ -90,7 +95,7 @@ public class MoverPersonaje : MonoBehaviour
         }
  
 
-        vely.y = rb.velocity.y;
+       // vely.y = rb.velocity.y;
         rb.velocity = vely;
         anim.SetFloat("VelX", x);
         anim.SetFloat("VelY", y);
