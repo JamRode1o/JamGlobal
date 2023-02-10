@@ -6,25 +6,29 @@ using UnityEngine.UI;
 public class EnemyLife : MonoBehaviour
 {
 
-    public Slider enemyLife;
+    static public float Health = 10;
 
-    static public float nowLife  ;
-
-    public float maxLife;
+    public float maxHealth;
 
 
     private void Start()
     {
-        nowLife = maxLife;
+        Health = maxHealth;
     }
+
+    public void TakeDamage(float damageAmount)
+    {
+        Health -= damageAmount;
+
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     void Update()
     {
-        enemyLife.value = nowLife; // maxLife;
 
-        if(nowLife <= 0)
-        {
-           // this.gameObject.SetActive(false);
-        }
     }
 
  
