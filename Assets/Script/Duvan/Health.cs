@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     public event Action DamageTaken;
     public event Action HealthUpgraded;
-
+    
     public  float fuerza, time;
     bool golpe = false;
 
@@ -88,13 +88,12 @@ public class Health : MonoBehaviour
         {
             if (!golpe)
             {
-                
                 TakeDamage();
-                golpe = true;
-                Vector3 dir = (other.transform.position - transform.position).normalized;
-                other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
+                // golpe = true;
+               // Vector3 dir = (other.transform.position - transform.position).normalized;
+               // other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
             }
-                StartCoroutine("Llamado");
+               // StartCoroutine("Llamado");
         }
         if (other.tag == "Arepa")
         {
@@ -107,10 +106,10 @@ public class Health : MonoBehaviour
 
     }
 
-    IEnumerator Llamado()
+    /*IEnumerator Llamado()
     {
         yield return new WaitForSeconds(0.5f);
         golpe = false;
-    }
+    }*/
 }
 

@@ -24,7 +24,7 @@ public class AtaqueJugador : MonoBehaviour
         time = Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+  /*  private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
@@ -34,11 +34,10 @@ public class AtaqueJugador : MonoBehaviour
             if(BerriondoMode)
                 EnemyLife.Health -= 35;
 
-            Vector3 dir = (other.transform.position - transform.position).normalized;
-            other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
+           // Vector3 dir = (other.transform.position - transform.position).normalized;
+            //other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
             
             //other.GetComponent<EnemyLogic>().enabled = false;
         }
-    }
-
+    }*/
 }

@@ -29,6 +29,8 @@ public class MoverPersonaje : MonoBehaviour
 
     Vector3 vely, direccion;
 
+    public bool isAttacking = false;
+
 
     private void Start()
     {
@@ -177,6 +179,7 @@ public class MoverPersonaje : MonoBehaviour
         TAtaque += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
+            isAttacking = true;
             arma.SetActive(true);
             StartCoroutine("Timer");
             if(TAtaque >= Spam)
@@ -198,8 +201,15 @@ public class MoverPersonaje : MonoBehaviour
 
     IEnumerator Timer()
     {
+        StartCoroutine(ResetAttackingBool());
         yield return new WaitForSeconds(tiempo);
         arma.SetActive(false);
+    }
+
+    IEnumerator ResetAttackingBool()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isAttacking = false;
     }
 
 }
