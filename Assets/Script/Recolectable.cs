@@ -65,6 +65,9 @@ public class Recolectable : MonoBehaviour
         //    }
         //}
 
+        if(other.tag=="Arepa")
+            other.gameObject.SetActive(false);
+
         if (other.tag == "Enemy")
         {
             son.PlayOneShot(sonidos[rando()]);

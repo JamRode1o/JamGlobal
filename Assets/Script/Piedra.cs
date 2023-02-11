@@ -30,6 +30,7 @@ public class Piedra : MonoBehaviour
         if(collision.gameObject.tag == "Respawn")
         {
             Destroy(this.gameObject);
+            
         }
     }
 }
