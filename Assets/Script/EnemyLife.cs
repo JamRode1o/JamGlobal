@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyLife : MonoBehaviour
 {
 
+    public HealthEnemyBarBehavior Icon;
     static public float Health = 10;
 
     public float maxHealth;
