@@ -28,11 +28,11 @@ public class AtaqueJugador : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            EnemyLife.nowLife -= 20;
+            EnemyLife.Health -= 20;
 
             
             if(BerriondoMode)
-                EnemyLife.nowLife -= 35;
+                EnemyLife.Health -= 35;
 
             Vector3 dir = (other.transform.position - transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
