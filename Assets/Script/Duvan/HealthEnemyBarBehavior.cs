@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthEnemyBarBehavior : MonoBehaviour
 {
     public Image Image;
+    public float healthTreshold = 0.2f;
+    public bool isDamaged = false;
 
-    public Vector3 Offset;
-
-    public void setImage()
+    public void SetImage()
     {
         Image.enabled = true;
     }
@@ -17,10 +19,5 @@ public class HealthEnemyBarBehavior : MonoBehaviour
     public void UnsetImage()
     {
         Image.enabled = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        Image.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
     }
 }
