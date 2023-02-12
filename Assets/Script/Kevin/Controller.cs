@@ -7,12 +7,13 @@ public class Controller : MonoBehaviour
 {
     [SerializeField] Animator ani;
     [SerializeField] Slider Stamina;
-
-    [SerializeField] float Speed,run;
+    [SerializeField] Transform cam;
+    [SerializeField] float Speed,run,giro;
 
     CharacterController Player;
+    Vector3 direccion;
 
-    float x, z, tiempo;
+    float x, z, tiempo,rotacion,angulo;
     bool Correr = false, cansado=false;
     
     void Start()
@@ -40,9 +41,18 @@ public class Controller : MonoBehaviour
     {
         x = Input.GetAxis("Vertical");
         z = Input.GetAxis("Horizontal");
+        direccion = new Vector3(z, 0, x).normalized;
+       // rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg ;
+        rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
-        Player.SimpleMove(new Vector3(0, 0, x).normalized * Speed);
-
+        if (direccion.magnitude > 0) 
+        {
+            angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotacion, ref giro, 0);
+            transform.rotation = Quaternion.Euler(0, angulo, 0);
+            Vector3 MovDir = Quaternion.Euler(0, rotacion, 0)* Vector3.forward;
+            //Player.SimpleMove(direccion * Speed);
+            Player.SimpleMove(MovDir.normalized * Speed);
+        }
         if ((x != 0 || z != 0) && Correr == false)
             ani.SetBool("Caminar", true);
         else
