@@ -12,20 +12,27 @@ public class EnemyDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && MP.isAttacking)
+        if (other.tag == "Enemy" )//&& MP.isAttacking)
         {
-            EnemyLifeReference.TakeDamage(2);
+            other.GetComponent<EnemyLife>().TakeDamage(2);// EnemyLifeReference.TakeDamage(2);
             other.GetComponent<Animator>().SetTrigger("Hit");
-            Instantiate(HitParticle,
-                new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
-                other.transform.rotation);
+
+            if(other.GetComponent<EnemyLife>().Health >= 1)
+            {
+                GameObject tem = Instantiate(HitParticle,
+                    new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
+                    other.transform.rotation);
+                Destroy(tem, 1.3f);
+            }
 
         }
-        if (EnemyLifeReference.Health <= 0)
+        if (other.GetComponent<EnemyLife>().Health <= 0)
         {
-            Instantiate(DeathParticle,
+           GameObject tem = Instantiate(DeathParticle,
                 new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
                 other.transform.rotation);
+            Destroy(tem, 1.3f);
         }
     }
+
 }

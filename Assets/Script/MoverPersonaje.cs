@@ -7,8 +7,8 @@ public class MoverPersonaje : MonoBehaviour
 {
     public static bool run = false;
 
-    public Slider stamina;
-    public Animator anim;
+    //public Slider stamina;
+   // public Animator anim;
     public AudioSource son;
     public AudioClip[] sonidoAtk;
 
@@ -27,6 +27,8 @@ public class MoverPersonaje : MonoBehaviour
     float time = 6;
 
     Vector3 vely;
+    public bool isAttacking = false;
+    [SerializeField] GameObject atk;
 
     /// <summary>
     /// //////////////////////
@@ -39,10 +41,10 @@ public class MoverPersonaje : MonoBehaviour
     [SerializeField] float Speed, Run, giro;
 
     CharacterController Player;
-    Vector3 direccion;
+    Vector3 direccion,MovDir;
 
     float x, z, tiempo, rotacion, angulo;
-    bool Correr = false, cansado = false;
+    bool Correr , cansado = false;
     private void Start()
     {
         Player = GetComponent<CharacterController>();
@@ -54,14 +56,20 @@ public class MoverPersonaje : MonoBehaviour
 
 
         time += Time.deltaTime;
-
         Movimiento();
+        tiempo += Time.deltaTime;
+
+        if (Correr == false && tiempo >= 5 && cansado == false)
+            Stamina.value += Time.deltaTime;
+
 
         Bloqueo();
 
         Ataque();
 
         BloqueoS.value += Time.deltaTime * 0.2f;
+
+        Debug.Log(isAttacking);
 
     }
 
@@ -79,28 +87,30 @@ public class MoverPersonaje : MonoBehaviour
             angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotacion, ref giro, 0);
             transform.rotation = Quaternion.Euler(0, angulo, 0);
 
-            Vector3 MovDir = Quaternion.Euler(0, rotacion, 0) * Vector3.forward;
+            MovDir = Quaternion.Euler(0, rotacion, 0) * Vector3.forward;
             //Player.SimpleMove(direccion * Speed);
             Player.SimpleMove(MovDir.normalized * Speed);
 
+            if (Input.GetKey(KeyCode.Space) && Stamina.value > 0)
+            {
+                Correr = true;
+                Player.SimpleMove(MovDir.normalized * Speed);
+                ani.SetBool("Correr", true);
+               // ani.SetTrigger("Correr");
+                Stamina.value -= Time.deltaTime;
+            }
+            else
+            {
+                Correr = false;
+                ani.SetBool("Correr", false);
+            }
         }
         if ((x != 0 || z != 0) && Correr == false)
-            ani.SetBool("caminar", true);
+            ani.SetBool("Caminar", true);
         else
-            ani.SetBool("caminar", false);
+            ani.SetBool("Caminar", false);
 
-        if (Input.GetKey(KeyCode.Space) && Stamina.value > 0)
-        {
-            Correr = true;
-            Player.SimpleMove(new Vector3(0, 0, x).normalized * Run);
-            ani.SetBool("Run", true);
-            Stamina.value -= Time.deltaTime;
-        }
-        else
-        {
-            Correr = false;
-            ani.SetBool("Run", false);
-        }
+        
     }
 
     //private void MoverPlayer()
@@ -165,12 +175,14 @@ public class MoverPersonaje : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             arma.SetActive(true);
-            StartCoroutine("Timer");
-            if(TAtaque >= Spam)
+            //atk.SetActive(true);
+            isAttacking = true;
+            StartCoroutine(ResetAttackingBool());
+            if (TAtaque >= Spam)
             {
                 TAtaque = 0;
             }
-            anim.SetBool("Atk", true);
+            ani.SetBool("Ataque", true);
             if(time > 5)
             {
                 son.PlayOneShot(sonidoAtk[rando()]);
@@ -179,8 +191,22 @@ public class MoverPersonaje : MonoBehaviour
         }
         else
         {
-            anim.SetBool("Atk", false);
+            ani.SetBool("Ataque", false);
         }
+    } 
+
+    IEnumerator Timer()
+    {
+        StartCoroutine(ResetAttackingBool());
+        yield return new WaitForSeconds(tiempo);
+        arma.SetActive(false);
+    }
+
+    IEnumerator ResetAttackingBool()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isAttacking = false;
+        arma.SetActive(false);
     }
 
 }
