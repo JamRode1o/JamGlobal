@@ -27,15 +27,10 @@ public class PlayerDetect : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // Demon.SetActive(true);
-            Invoke("SpawnBoss", 0.3f);
+           // Demon.SetActive(true);
+            adBoss.SetActive(true);
+            adPrincipal.SetActive(false);
         }
             
-    }
-
-    void SpawnBoss()
-    {
-        adBoss.SetActive(true);
-        adPrincipal.SetActive(false);
     }
 }

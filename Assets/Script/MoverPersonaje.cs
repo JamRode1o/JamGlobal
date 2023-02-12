@@ -60,7 +60,7 @@ public class MoverPersonaje : MonoBehaviour
 
         Ataque();
         
-            // BloqueoS.value += Time.deltaTime * 0.2f;
+             BloqueoS.value += Time.deltaTime * 0.2f;
         
     }
 
@@ -157,12 +157,12 @@ public class MoverPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Movent = false;
-            //BloqueoI.SetActive(true);
+            BloqueoI.gameObject.SetActive(true);
         }
         else
         {
             Movent = true;
-           // BloqueoI.SetActive(false);
+            BloqueoI.gameObject.SetActive(false);
           //  BloqueoS.value += Time.deltaTime;
         }
     }
