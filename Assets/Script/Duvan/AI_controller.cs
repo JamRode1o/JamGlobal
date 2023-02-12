@@ -34,6 +34,9 @@ public class AI_controller : MonoBehaviour
 
 
 
+    Animator ani;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -110,11 +113,13 @@ public class AI_controller : MonoBehaviour
             if (m_TimeToRotate <= 0)
             {
                 Move(speedWalk);
+                ani.SetBool("Waling",true);
                 Looking_Player(playerLastPosition);
             }
             else
             {
                 Stop();
+                ani.SetBool("Waling", false);
                 m_TimeToRotate -= Time.deltaTime;
             }
         }
