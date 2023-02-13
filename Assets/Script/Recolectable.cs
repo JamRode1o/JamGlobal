@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class Recolectable : MonoBehaviour
 {
     [SerializeReference] Image[] arepa= new Image[10];// = new List<Image>();
-    [SerializeReference] Slider guaro;
+    [SerializeField] GameObject[] guaro = new GameObject[4];
     [SerializeField] GameObject perder;
     [SerializeField] float  StaminaValue;
-    public static float Guaro;
+    //public static float Guaro;
+    float Guaro,grito;
 
     public Slider stamina;
 
@@ -18,18 +19,53 @@ public class Recolectable : MonoBehaviour
 
     public AudioSource son;
     public AudioClip[] sonidos;
+    public Animator ani;
 
+
+    
 
     void Update()
     {
 
-        guaro.value = Guaro;
+       
         if(MoverPersonaje.run == false)
         {
               stamina.value += Time.deltaTime;                   
         }
 
+        switch (Guaro)
+        {
+            case 0:
+                guaro[1].SetActive(false);
+                guaro[2].SetActive(false);
+                guaro[3].SetActive(false);
+                break;
+            case 1:
+                guaro[1].SetActive(true);
+                guaro[2].SetActive(false);
+                guaro[3].SetActive(false);
+                break;
+            case 2:
+                guaro[2].SetActive(true);
+                guaro[3].SetActive(false);
+                guaro[1].SetActive(false);
+                break;
+            case 3:
+                guaro[3].SetActive(true);
+                guaro[2].SetActive(false);
+                guaro[1].SetActive(false);
+                grito = 1;
+                break;
+            default:
+                break;
+        }
 
+
+        if (Guaro >= 3 && grito > 1)
+        {
+            ani.SetTrigger("Grito");
+            grito = 0;// hacer que solo pueda gritar una vez cada vez que tenga los 4 de guaro
+        }
         //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
         //{
         //    arepa[i].gameObject.SetActive(true);
@@ -75,7 +111,7 @@ public class Recolectable : MonoBehaviour
 
         if (other.tag == "Guaro")
         {
-            Guaro = +20;
+            Guaro += 1;
             other.gameObject.SetActive(false);
         }
     }
