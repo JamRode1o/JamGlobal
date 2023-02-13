@@ -10,4 +10,9 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(NombreEscena);    
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
 }

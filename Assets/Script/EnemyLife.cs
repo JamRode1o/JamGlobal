@@ -1,32 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyLife : MonoBehaviour
 {
 
-    public Slider enemyLife;
+    public HealthEnemyBarBehavior Icon;
+    public float Health = 10;
 
-    static public float nowLife  ;
-
-    public float maxLife;
+    public float maxHealth;
 
 
     private void Start()
     {
-        nowLife = maxLife;
+        Health = maxHealth;
+        Icon.UnsetImage();
     }
+
+    public void TakeDamage(float damageAmount)
+    {
+        Health -= damageAmount;
+
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+    
+
     void Update()
     {
-        enemyLife.value = nowLife; // maxLife;
-
-        if(nowLife <= 0)
+        float HealthPercentage = Health / maxHealth;
+        if (HealthPercentage <= Icon.healthTreshold)
         {
-           // this.gameObject.SetActive(false);
+            if (!Icon.isDamaged)
+            {
+                Icon.SetImage();
+                Icon.isDamaged = true;
+            }
         }
+        else
+        {
+            if (Icon.isDamaged)
+            {
+                Icon.UnsetImage();
+                Icon.isDamaged = false;
+            }
+        }
+
     }
-
- 
-
+    
 }

@@ -24,21 +24,20 @@ public class AtaqueJugador : MonoBehaviour
         time = Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+  /*  private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            EnemyLife.nowLife -= 20;
+            EnemyLife.Health -= 20;
 
             
             if(BerriondoMode)
-                EnemyLife.nowLife -= 35;
+                EnemyLife.Health -= 35;
 
-            Vector3 dir = (other.transform.position - transform.position).normalized;
-            other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
+           // Vector3 dir = (other.transform.position - transform.position).normalized;
+            //other.GetComponent<Rigidbody>().AddForce(dir * fuerza, ForceMode.Impulse);
             
             //other.GetComponent<EnemyLogic>().enabled = false;
         }
-    }
-
+    }*/
 }
