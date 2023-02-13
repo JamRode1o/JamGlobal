@@ -19,6 +19,7 @@ public class Rock : MonoBehaviour
         }
     }
 
+
     void DestroyThis()
     {
         Destroy(gameObject);
