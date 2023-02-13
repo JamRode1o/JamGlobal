@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour
     CharacterController Player;
     Vector3 direccion;
 
-    float x, z, tiempo,rotacion,angulo;
+    float x, z,rotacion,angulo,tiempo;
     bool Correr = false, cansado=false;
     
     void Start()
@@ -27,11 +27,21 @@ public class Controller : MonoBehaviour
     {
         Movimiento();
 
-        tiempo += Time.deltaTime;
 
-        if(Correr == false && tiempo >= 5 && cansado == false)
+        if(Correr == false  && cansado == false)
             Stamina.value += Time.deltaTime;
         //else if(cansado == true && ) // hacer que no se llene la barra de correr 
+        if (Stamina.value <= 0)
+        {
+            cansado = true;
+            tiempo += Time.deltaTime;
+
+            if (tiempo >= 10)
+            {
+                cansado = false;
+                tiempo = 0;
+            }
+        }
 
     }
 
@@ -58,7 +68,7 @@ public class Controller : MonoBehaviour
         else
             ani.SetBool("Caminar", false);
 
-        if (Input.GetKey(KeyCode.Space) && Stamina.value > 0)
+        if (Input.GetKey(KeyCode.Space) && Stamina.value > 0 && cansado == false)
         {
             Correr = true;
             Player.SimpleMove(new Vector3(0, 0, x).normalized * run);

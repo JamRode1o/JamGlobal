@@ -13,7 +13,7 @@ public class AtaqueJugador : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            Recolectable.Guaro -= Time.deltaTime;
+           // Recolectable.Guaro -= Time.deltaTime;
             BerriondoMode = true;
         }
         else
