@@ -266,6 +266,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light
       objectReference: {fileID: 0}
+    - target: {fileID: 8679597746424947837, guid: 4fee46ecfb4e45e4b8266edc66e844c7, type: 3}
+      propertyPath: m_Range
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679597746424947837, guid: 4fee46ecfb4e45e4b8266edc66e844c7, type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679597746424947837, guid: 4fee46ecfb4e45e4b8266edc66e844c7, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fee46ecfb4e45e4b8266edc66e844c7, type: 3}
 --- !u!4 &1275294720673567332 stripped
