@@ -68,7 +68,7 @@ public class Controller : MonoBehaviour
         else
             ani.SetBool("Caminar", false);
 
-        if (Input.GetKey(KeyCode.Space) && Stamina.value > 0 && cansado == false)
+        if (Input.GetKey(KeyCode.Space) &&  cansado == false)//Stamina.value > 0 && cansado == false)
         {
             Correr = true;
             Player.SimpleMove(new Vector3(0, 0, x).normalized * run);
