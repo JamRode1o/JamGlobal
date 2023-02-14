@@ -10,8 +10,10 @@ public class Recolectable : MonoBehaviour
     [SerializeField] GameObject[] guaro = new GameObject[4];
     [SerializeField] GameObject perder;
     [SerializeField] float  StaminaValue;
-    //public static float Guaro;
-    float Guaro,grito;
+    public static float Guaro;
+    float grito;
+
+    public static bool BerriondoMode;
 
     public Slider stamina;
 
@@ -20,7 +22,7 @@ public class Recolectable : MonoBehaviour
     public AudioSource son;
     public AudioClip[] sonidos;
     public Animator ani;
-
+    bool berr=false;
 
     
 
@@ -32,7 +34,7 @@ public class Recolectable : MonoBehaviour
         {
               stamina.value += Time.deltaTime;                   
         }
-
+        
         switch (Guaro)
         {
             case 0:
@@ -60,12 +62,15 @@ public class Recolectable : MonoBehaviour
                 break;
         }
 
+        if (Input.GetKeyUp(KeyCode.Q))
+            BerriondoMode = !BerriondoMode;
+        
 
-        if (Guaro >= 3 && grito > 1)
-        {
-            ani.SetTrigger("Grito");
-            grito = 0;// hacer que solo pueda gritar una vez cada vez que tenga los 4 de guaro
-        }
+        //if (Guaro >= 3 && grito > 1)
+        //{
+        //    ani.SetTrigger("Grito");
+        //    grito = 0;// hacer que solo pueda gritar una vez cada vez que tenga los 4 de guaro
+        //}
         //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
         //{
         //    arepa[i].gameObject.SetActive(true);

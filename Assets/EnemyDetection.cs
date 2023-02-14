@@ -14,17 +14,35 @@ public class EnemyDetection : MonoBehaviour
     {
         if (other.tag == "Enemy" )//&& MP.isAttacking)
         {
-            other.GetComponent<EnemyLife>().TakeDamage(2);// EnemyLifeReference.TakeDamage(2);
-            other.GetComponent<Animator>().SetBool("Walking",false);
-            other.GetComponent<Animator>().SetTrigger("Hit");
 
-            if(other.GetComponent<EnemyLife>().Health >= 1)
+            if (Recolectable.BerriondoMode == true)
             {
-                GameObject tem = Instantiate(HitParticle,
-                    new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
-                    other.transform.rotation);
-                Destroy(tem, 1.3f);
+                Recolectable.Guaro -= 1;
+                other.GetComponent<EnemyLife>().TakeDamage(4);// EnemyLifeReference.TakeDamage(2);
+                other.GetComponent<Animator>().SetTrigger("Hit");
+
+                if (other.GetComponent<EnemyLife>().Health >= 1)
+                {
+                    GameObject tem = Instantiate(HitParticle,
+                        new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
+                        other.transform.rotation);
+                    Destroy(tem, 1.3f);
+                }
             }
+            else
+            {
+                other.GetComponent<EnemyLife>().TakeDamage(2);// EnemyLifeReference.TakeDamage(2);
+                other.GetComponent<Animator>().SetTrigger("Hit");
+
+                if (other.GetComponent<EnemyLife>().Health >= 1)
+                {
+                    GameObject tem = Instantiate(HitParticle,
+                        new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
+                        other.transform.rotation);
+                    Destroy(tem, 1.3f);
+                }
+            }
+
 
         }
         if (other.GetComponent<EnemyLife>().Health <= 0)
