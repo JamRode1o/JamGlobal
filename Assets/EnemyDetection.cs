@@ -15,6 +15,7 @@ public class EnemyDetection : MonoBehaviour
         if (other.tag == "Enemy" )//&& MP.isAttacking)
         {
             other.GetComponent<EnemyLife>().TakeDamage(2);// EnemyLifeReference.TakeDamage(2);
+            other.GetComponent<Animator>().SetBool("Walking",false);
             other.GetComponent<Animator>().SetTrigger("Hit");
 
             if(other.GetComponent<EnemyLife>().Health >= 1)
