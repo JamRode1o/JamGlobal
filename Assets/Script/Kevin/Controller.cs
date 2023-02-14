@@ -29,7 +29,10 @@ public class Controller : MonoBehaviour
 
 
         if(Correr == false  && cansado == false)
+        {
             Stamina.value += Time.deltaTime;
+            Debug.Log("Estoy llenando");
+        }
         //else if(cansado == true && ) // hacer que no se llene la barra de correr 
         if (Stamina.value <= 0)
         {

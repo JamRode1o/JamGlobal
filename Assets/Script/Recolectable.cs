@@ -9,7 +9,6 @@ public class Recolectable : MonoBehaviour
     [SerializeReference] Image[] arepa= new Image[10];// = new List<Image>();
     [SerializeField] GameObject[] guaro = new GameObject[4];
     [SerializeField] GameObject perder;
-    [SerializeField] float  StaminaValue;
     public static float Guaro;
     float grito;
 
@@ -32,7 +31,7 @@ public class Recolectable : MonoBehaviour
        
         if(MoverPersonaje.run == false)
         {
-              stamina.value += Time.deltaTime;                   
+            //  stamina.value += Time.deltaTime;                   
         }
         
         switch (Guaro)
