@@ -34,7 +34,7 @@ public class AI_controller : MonoBehaviour
 
 
 
-    Animator ani;
+  
 
 
     // Start is called before the first frame update
@@ -49,11 +49,9 @@ public class AI_controller : MonoBehaviour
 
         m_CurrentPatrolPointIndex = 0;
         navMeshAgent = GetComponent<NavMeshAgent>();
-
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;
         navMeshAgent.SetDestination(patrolPoints[m_CurrentPatrolPointIndex].position);
-
     }
 
     // Update is called once per frame
@@ -63,10 +61,12 @@ public class AI_controller : MonoBehaviour
 
         if (!m_IsPatrol)
         {
+            GetComponent<Animator>().SetBool("Running",true);
             Chasing();
         }
         else
         {
+            GetComponent<Animator>().SetBool("Walking",true);
             Patroling();
         }
 
@@ -113,13 +113,11 @@ public class AI_controller : MonoBehaviour
             if (m_TimeToRotate <= 0)
             {
                 Move(speedWalk);
-                ani.SetBool("Waling",true);
                 Looking_Player(playerLastPosition);
             }
             else
             {
                 Stop();
-                ani.SetBool("Waling", false);
                 m_TimeToRotate -= Time.deltaTime;
             }
         }
@@ -183,6 +181,7 @@ public class AI_controller : MonoBehaviour
             else
             {
                 Stop();
+                GetComponent<Animator>().SetBool("Walking",false);
                 m_WaitTime -= Time.deltaTime;
             }
         }
@@ -220,7 +219,7 @@ public class AI_controller : MonoBehaviour
             {
                 m_PlayerPosition = Player.transform.position;
             }
-        }// quitar esste
+        }
     }
     
 }
