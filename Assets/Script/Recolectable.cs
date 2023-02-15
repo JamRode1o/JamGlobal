@@ -23,7 +23,10 @@ public class Recolectable : MonoBehaviour
     public AudioClip[] sonidos;
     bool berr=false;
 
-    
+    private void Start()
+    {
+        Guaro = 0;
+    }
 
     void Update()
     {
@@ -76,15 +79,15 @@ public class Recolectable : MonoBehaviour
         {
             BerriondoMode = !BerriondoMode;
             
-            if (Guaro > 0 && BerriondoMode == true)
+            if (Guaro >= 1 && BerriondoMode == true)
             {
                 ani.SetBool("grito", true);
                 //ani.SetBool("grito", false);
                 //StartCoroutine(delay());
 
             }
-
-            Debug.Log("estado" + BerriondoMode);
+            else
+                ani.SetBool("grito", true);
         }
         
 
