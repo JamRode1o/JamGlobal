@@ -8,11 +8,12 @@ public class Recolectable : MonoBehaviour
 {
     [SerializeReference] Image[] arepa= new Image[10];// = new List<Image>();
     [SerializeField] GameObject[] guaro = new GameObject[4];
-    [SerializeField] GameObject perder;
+    [SerializeField] GameObject perder, ImagenBerriondo;
     public static float Guaro;
     float grito;
 
-    public static bool BerriondoMode;
+    public Animator ani;
+    public static bool BerriondoMode = false;
 
     public Slider stamina;
 
@@ -20,7 +21,6 @@ public class Recolectable : MonoBehaviour
 
     public AudioSource son;
     public AudioClip[] sonidos;
-    public Animator ani;
     bool berr=false;
 
     
@@ -33,7 +33,18 @@ public class Recolectable : MonoBehaviour
         {
             //  stamina.value += Time.deltaTime;                   
         }
-        
+
+        if (BerriondoMode)
+        {
+            ImagenBerriondo.SetActive(true);
+            if(Guaro>=1)
+                Guaro -= 1;
+            else
+                Guaro -= 0;
+        }
+        else
+            ImagenBerriondo.SetActive(false);
+
         switch (Guaro)
         {
             case 0:
@@ -62,7 +73,19 @@ public class Recolectable : MonoBehaviour
         }
 
         if (Input.GetKeyUp(KeyCode.Q))
+        {
             BerriondoMode = !BerriondoMode;
+            
+            if (Guaro > 0 && BerriondoMode == true)
+            {
+                ani.SetBool("grito", true);
+                //ani.SetBool("grito", false);
+                //StartCoroutine(delay());
+
+            }
+
+            Debug.Log("estado" + BerriondoMode);
+        }
         
 
         //if (Guaro >= 3 && grito > 1)
@@ -118,5 +141,11 @@ public class Recolectable : MonoBehaviour
             Guaro += 1;
             other.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.8f);
+             ani.SetBool("grito", false);
     }
 }
