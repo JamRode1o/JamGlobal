@@ -59,17 +59,25 @@ public class MoverPersonaje : MonoBehaviour
         Movimiento();
         tiempo += Time.deltaTime;
 
-        if (Correr == false && tiempo >= 5 && cansado == false)
+        if (Correr == false && cansado == false)
             Stamina.value += Time.deltaTime;
+        //else if(cansado == true && ) // hacer que no se llene la barra de correr 
+        if (Stamina.value <= 0)
+        {
+            cansado = true;
+            tiempo += Time.deltaTime;
 
-
+            if (tiempo >= 10)
+            {
+                cansado = false;
+                tiempo = 0;
+            }
+        }
         Bloqueo();
 
         Ataque();
 
         BloqueoS.value += Time.deltaTime * 0.2f;
-
-        Debug.Log(isAttacking);
 
     }
 
@@ -91,13 +99,14 @@ public class MoverPersonaje : MonoBehaviour
             //Player.SimpleMove(direccion * Speed);
             Player.SimpleMove(MovDir.normalized * Speed);
 
-            if (Input.GetKey(KeyCode.Space) && Stamina.value > 0)
+            if (Input.GetKey(KeyCode.Space) && cansado == false)
             {
                 Correr = true;
+                Stamina.value -= Time.deltaTime;
                 Player.SimpleMove(MovDir.normalized * Speed);
                 ani.SetBool("Correr", true);
-               // ani.SetTrigger("Correr");
-                Stamina.value -= Time.deltaTime;
+                // ani.SetTrigger("Correr");
+                
             }
             else
             {

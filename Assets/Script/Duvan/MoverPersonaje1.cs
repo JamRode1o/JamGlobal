@@ -118,7 +118,7 @@ public class MoverPersonajes : MonoBehaviour
         {
             
             //anim.SetBool("Run", true);
-            stamina.value -= Time.deltaTime;
+           // stamina.value -= Time.deltaTime;
             //if(x != 0 || y != 0)
             //{
             //    //    Debug.Log("correr abajo");
