@@ -12,9 +12,6 @@ public class MoverPersonaje : MonoBehaviour
     public AudioSource son;
     public AudioClip[] sonidoAtk;
 
-    public float velocidadMovimiento = 7;
-    public float velocidadRotacion = 200.0f;
-    public float velCorrer;
 
     [SerializeField] GameObject BloqueoI, arma;
     [SerializeField] Slider BloqueoS;

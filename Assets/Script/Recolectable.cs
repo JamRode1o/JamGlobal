@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Recolectable : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Recolectable : MonoBehaviour
     [SerializeField] GameObject perder, ImagenBerriondo;
     public static float Guaro;
     float grito;
+
+    [SerializeField] ChromaticAberration cro;
+    [SerializeField] PostProcessVolume pos;
 
     public Animator ani;
     public static bool BerriondoMode = false;
@@ -30,7 +34,7 @@ public class Recolectable : MonoBehaviour
 
     void Update()
     {
-
+       
        
         if(MoverPersonaje.run == false)
         {
@@ -81,13 +85,14 @@ public class Recolectable : MonoBehaviour
             
             if (Guaro >= 1 && BerriondoMode == true)
             {
-                ani.SetBool("grito", true);
+                //ani.SetBool("grito", true);
                 //ani.SetBool("grito", false);
                 //StartCoroutine(delay());
-
+               // pos.GetComponent<ChromaticAberration>().intensity.Override(1);
             }
-            else
-                ani.SetBool("grito", true);
+            //else
+               
+            // ani.SetBool("grito", true);
         }
         
 
