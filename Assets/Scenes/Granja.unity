@@ -37056,7 +37056,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354257135}
-  m_LocalRotation: {x: -0.022266395, y: 0.9769503, z: -0.12902418, w: -0.16859758}
+  m_LocalRotation: {x: -0.022266116, y: 0.97695065, z: -0.12902428, w: -0.16859537}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37243,7 +37243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358351059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -316.0704, y: 3.17, z: -72.667206}
+  m_LocalPosition: {x: -316.07043, y: 3.17, z: -72.6672}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41520,7 +41520,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529693457}
-  m_LocalRotation: {x: -0.025329407, y: 0.97444177, z: -0.14677306, w: -0.16816464}
+  m_LocalRotation: {x: -0.025329098, y: 0.9744421, z: -0.14677316, w: -0.16816248}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61330,7 +61330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116338583}
-  m_LocalRotation: {x: -0.019204121, y: 0.9791302, z: -0.11127963, w: -0.16897376}
+  m_LocalRotation: {x: -0.019203883, y: 0.97913057, z: -0.11127973, w: -0.16897157}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -62193,6 +62193,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: ImagenBerriondo
+      value: 
+      objectReference: {fileID: 946221990}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[0]
+      value: 
+      objectReference: {fileID: 710152481}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[1]
+      value: 
+      objectReference: {fileID: 1951292635}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[2]
+      value: 
+      objectReference: {fileID: 2029109678}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[3]
+      value: 
+      objectReference: {fileID: 18883525}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[4]
+      value: 
+      objectReference: {fileID: 710152481}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[5]
+      value: 
+      objectReference: {fileID: 1951292635}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[6]
+      value: 
+      objectReference: {fileID: 2029109678}
+    - target: {fileID: 1426318072902048340, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
+      propertyPath: guaro.Array.data[7]
+      value: 
+      objectReference: {fileID: 18883525}
     - target: {fileID: 1915945658139663722, guid: c4d698af7a80f004fb6b013120b9163d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.295
@@ -62532,8 +62572,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343991807908809851}
-  m_LocalRotation: {x: -0.022266395, y: 0.9769503, z: -0.12902416, w: -0.16859758}
-  m_LocalPosition: {x: -316.0704, y: 3.17, z: -72.667206}
+  m_LocalRotation: {x: -0.022266114, y: 0.97695065, z: -0.12902427, w: -0.16859534}
+  m_LocalPosition: {x: -316.07043, y: 3.17, z: -72.6672}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
