@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Recolectable : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class Recolectable : MonoBehaviour
     [SerializeField] GameObject perder, ImagenBerriondo;
     public static float Guaro;
     float grito;
+
+
+    [SerializeField] CinemachineFreeLook Cam;
+    CinemachineBasicMultiChannelPerlin Noise;
 
     public Animator ani;
     public static bool BerriondoMode = false;
@@ -25,7 +30,9 @@ public class Recolectable : MonoBehaviour
 
     private void Start()
     {
+
         Guaro = 0;
+        Noise = Cam.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     void Update()
@@ -81,13 +88,14 @@ public class Recolectable : MonoBehaviour
             
             if (Guaro >= 1 && BerriondoMode == true)
             {
-                ani.SetBool("grito", true);
+                // ani.SetBool("grito", true);
                 //ani.SetBool("grito", false);
                 //StartCoroutine(delay());
-
+                Noise.m_AmplitudeGain = 1;
             }
             else
-                ani.SetBool("grito", true);
+                Noise.m_AmplitudeGain = 0;
+            //  ani.SetBool("grito", true);
         }
         
 
