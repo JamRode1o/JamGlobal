@@ -66,7 +66,7 @@ public class AI_controller : MonoBehaviour
         }
         else
         {
-            GetComponent<Animator>().SetBool("Walking",true);
+            //GetComponent<Animator>().SetBool("Walking",true);
             Patroling();
         }
 
