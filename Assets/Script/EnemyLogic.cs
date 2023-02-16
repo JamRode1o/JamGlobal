@@ -96,7 +96,7 @@ public class EnemyLogic : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Recolectable.Arepas--;
+           // Recolectable.Arepas--;
             
         }
     }

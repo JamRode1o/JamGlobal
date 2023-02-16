@@ -558,9 +558,9 @@ GameObject:
   - component: {fileID: 1915945659004180910}
   - component: {fileID: 1915945659004180908}
   - component: {fileID: 1915945659004180906}
-  - component: {fileID: 1915945659004180907}
   - component: {fileID: 1915945659004180905}
   - component: {fileID: 4359937275580563413}
+  - component: {fileID: 1426318072902048340}
   - component: {fileID: 1915945659004180886}
   - component: {fileID: 1915945659004180820}
   m_Layer: 3
@@ -688,53 +688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e849499b926ac8147bf4dcbae520d266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1915945659004180907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915945659004180887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c3677cf4152eb4cbb1c75b07e708ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arepa:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  guaro:
-  - {fileID: 0}
-  perder: {fileID: 0}
-  ImagenBerriondo: {fileID: 0}
-  ani: {fileID: 0}
-  stamina: {fileID: 0}
-  son: {fileID: 1915945658527721849}
-  sonidos:
-  - {fileID: 8300000, guid: 5c21757f8b496d0449b4affdf44684b0, type: 3}
-  - {fileID: 8300000, guid: 16b58ff790147e84d8aeb9c478b09eca, type: 3}
-  - {fileID: 8300000, guid: 19923902f00e8e241bb53740946e5fe2, type: 3}
-  - {fileID: 8300000, guid: 7026bc87061770b44a1f11615317cc7f, type: 3}
-  - {fileID: 8300000, guid: 55ff7965ce769c046b51c8c4d84ff22b, type: 3}
-  - {fileID: 8300000, guid: ace7deaff3a804d4fb278dec19f470ff, type: 3}
 --- !u!114 &1915945659004180905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,6 +716,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 0}
+--- !u!114 &1426318072902048340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915945659004180887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c3677cf4152eb4cbb1c75b07e708ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arepa:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  guaro:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  perder: {fileID: 0}
+  ImagenBerriondo: {fileID: 0}
+  ani: {fileID: 0}
+  stamina: {fileID: 0}
+  son: {fileID: 0}
+  sonidos: []
 --- !u!82 &1915945659004180886
 AudioSource:
   m_ObjectHideFlags: 0
