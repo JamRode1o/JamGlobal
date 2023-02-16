@@ -558,8 +558,9 @@ GameObject:
   - component: {fileID: 1915945659004180910}
   - component: {fileID: 1915945659004180908}
   - component: {fileID: 1915945659004180906}
-  - component: {fileID: 1915945659004180907}
   - component: {fileID: 1915945659004180905}
+  - component: {fileID: 4359937275580563413}
+  - component: {fileID: 1426318072902048340}
   - component: {fileID: 1915945659004180886}
   - component: {fileID: 1915945659004180820}
   m_Layer: 3
@@ -652,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcbd617406eb7b4784144ca910b4f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   son: {fileID: 1915945657268058951}
   sonidoAtk:
   - {fileID: 8300000, guid: f237530af8045db45952329dbb91b2ed, type: 3}
@@ -669,6 +669,7 @@ MonoBehaviour:
   TAtaque: 0
   Spam: 1.2
   isAttacking: 0
+  atk: {fileID: 0}
   ani: {fileID: 596236613}
   Stamina: {fileID: 0}
   cam: {fileID: 0}
@@ -687,7 +688,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e849499b926ac8147bf4dcbae520d266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1915945659004180907
+--- !u!114 &1915945659004180905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915945659004180887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad1e387dd9bb424a955eb7a74594f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  fuerza: 20
+  time: 0
+--- !u!114 &4359937275580563413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915945659004180887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c06d74f9a388fc4e9b0162e0be1aab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
+--- !u!114 &1426318072902048340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -710,43 +739,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  guaro:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  guaro: {fileID: 0}
   perder: {fileID: 0}
-  StaminaValue: 0
+  ImagenBerriondo: {fileID: 0}
+  ani: {fileID: 0}
   stamina: {fileID: 0}
-  son: {fileID: 1915945658527721849}
-  sonidos:
-  - {fileID: 8300000, guid: 5c21757f8b496d0449b4affdf44684b0, type: 3}
-  - {fileID: 8300000, guid: 16b58ff790147e84d8aeb9c478b09eca, type: 3}
-  - {fileID: 8300000, guid: 19923902f00e8e241bb53740946e5fe2, type: 3}
-  - {fileID: 8300000, guid: 7026bc87061770b44a1f11615317cc7f, type: 3}
-  - {fileID: 8300000, guid: 55ff7965ce769c046b51c8c4d84ff22b, type: 3}
-  - {fileID: 8300000, guid: ace7deaff3a804d4fb278dec19f470ff, type: 3}
---- !u!114 &1915945659004180905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915945659004180887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad1e387dd9bb424a955eb7a74594f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  fuerza: 20
-  time: 0
+  son: {fileID: 0}
+  sonidos: []
 --- !u!82 &1915945659004180886
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1221,3 +1224,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8150619726191066848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646886466817384007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cb73a4028ca93408ed91e0c0ea2605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepSounds:
+  - {fileID: 8300000, guid: de6ee3fd765818e4b8bdb15df08b82b6, type: 3}
+  - {fileID: 8300000, guid: 983ef61e1eb5a284c8166284fd590283, type: 3}
+  - {fileID: 8300000, guid: ed4c6aeef35081841bf6703ecb835deb, type: 3}
+  - {fileID: 8300000, guid: ca8d3c3a53d7c4b41af6a36f6d751033, type: 3}
+  - {fileID: 8300000, guid: d21569f6a8341d84f8d32fde038e116e, type: 3}
+  - {fileID: 8300000, guid: 49c594cd9d5c5584d81b670755bd9c6e, type: 3}
