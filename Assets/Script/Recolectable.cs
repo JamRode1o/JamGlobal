@@ -144,7 +144,7 @@ public class Recolectable : MonoBehaviour
 
         if (other.tag == "Enemy")
         {
-            son.PlayOneShot(sonidos[rando()]);
+            //son.PlayOneShot(sonidos[rando()]);
         }
 
         if (other.tag == "Guaro")

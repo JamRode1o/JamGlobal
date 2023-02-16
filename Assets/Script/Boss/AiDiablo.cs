@@ -41,13 +41,16 @@ public class AiDiablo : MonoBehaviour {
     public enum BossState { GoToPlayer, DistancePlayer, SpawnGoblins, SpawnAirBullets, SpawnFire, SkipBoss }
 
 
-
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        //target = GameObject.FindGameObjectWithTag("Player").transform;
+        //agent = GetComponent<NavMeshAgent>();
         StartCoroutine(WaitAndEjecute(2f, randomAtack));
         speedSave = agent.speed;
     }

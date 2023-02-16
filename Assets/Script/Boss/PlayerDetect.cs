@@ -11,9 +11,9 @@ public class PlayerDetect : MonoBehaviour
     [SerializeField]
     private GameObject adPrincipal;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        //Demon.SetActive(false);
+        Demon.SetActive(false);
         adBoss.SetActive(false);
     }
 
@@ -27,8 +27,9 @@ public class PlayerDetect : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // Demon.SetActive(true);
-            Invoke("SpawnBoss", 0.3f);
+            Demon.SetActive(true);
+            //Invoke("SpawnBoss", 0.3f);
+            SpawnBoss();
         }
             
     }
