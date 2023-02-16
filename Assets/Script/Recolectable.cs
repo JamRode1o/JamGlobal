@@ -76,7 +76,7 @@ public class Recolectable : MonoBehaviour
         {
             BerriondoMode = !BerriondoMode;
             
-            if (Guaro == 4 && BerriondoMode == true)
+            if (Guaro == 3 && BerriondoMode == true)
             {
                 ani.SetBool("grito", true);
                 //ani.SetBool("grito", false);
