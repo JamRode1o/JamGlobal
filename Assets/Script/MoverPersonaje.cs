@@ -7,23 +7,15 @@ public class MoverPersonaje : MonoBehaviour
 {
     public static bool run = false;
 
-    //public Slider stamina;
-   // public Animator anim;
     public AudioSource son;
     public AudioClip[] sonidoAtk;
-
-    public float velocidadMovimiento = 7;
-    public float velocidadRotacion = 200.0f;
-    public float velCorrer;
+    
 
     [SerializeField] GameObject BloqueoI, arma;
     [SerializeField] Slider BloqueoS;
 
     [SerializeField] float TAtaque, Spam;
 
-    Rigidbody rb;
-
-    bool Movent;
     float time = 6;
 
     Vector3 vely;
@@ -44,11 +36,10 @@ public class MoverPersonaje : MonoBehaviour
     Vector3 direccion,MovDir;
 
     float x, z, tiempo, rotacion, angulo;
-    bool Correr , cansado = false;
+    bool Correr , cansado = false, Movent;
     private void Start()
     {
         Player = GetComponent<CharacterController>();
-        // rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -61,7 +52,7 @@ public class MoverPersonaje : MonoBehaviour
 
         if (Correr == false && cansado == false)
             Stamina.value += Time.deltaTime;
-        //else if(cansado == true && ) // hacer que no se llene la barra de correr 
+
         if (Stamina.value <= 0)
         {
             cansado = true;
@@ -86,7 +77,6 @@ public class MoverPersonaje : MonoBehaviour
         x = Input.GetAxis("Vertical");
         z = Input.GetAxis("Horizontal");
         direccion = new Vector3(z, 0, x).normalized;
-        // rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg ;
         rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
         if (direccion.magnitude > 0)
@@ -96,7 +86,6 @@ public class MoverPersonaje : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angulo, 0);
 
             MovDir = Quaternion.Euler(0, rotacion, 0) * Vector3.forward;
-            //Player.SimpleMove(direccion * Speed);
             Player.SimpleMove(MovDir.normalized * Speed);
 
             if (Input.GetKey(KeyCode.Space) && cansado == false)
@@ -104,9 +93,7 @@ public class MoverPersonaje : MonoBehaviour
                 Correr = true;
                 Stamina.value -= Time.deltaTime;
                 Player.SimpleMove(MovDir.normalized * Speed);
-                ani.SetBool("Correr", true);
-                // ani.SetTrigger("Correr");
-                
+                ani.SetBool("Correr", true);               
             }
             else
             {
@@ -168,12 +155,12 @@ public class MoverPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Movent = false;
-            //BloqueoI.gameObject.SetActive(true);
+            BloqueoI.gameObject.SetActive(true);
         }
         else
         {
             Movent = true;
-           // BloqueoI.gameObject.SetActive(false);
+            BloqueoI.gameObject.SetActive(false);
           //  BloqueoS.value += Time.deltaTime;
         }
     }
