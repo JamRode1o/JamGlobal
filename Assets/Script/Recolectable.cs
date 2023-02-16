@@ -3,26 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Cinemachine;
 
 public class Recolectable : MonoBehaviour
 {
-    [SerializeReference] Image[] arepa= new Image[10];// = new List<Image>();
     [SerializeField] GameObject[] guaro = new GameObject[4];
     [SerializeField] GameObject perder, ImagenBerriondo;
     public static float Guaro;
     float grito;
 
-
-    [SerializeField] CinemachineFreeLook Cam;
-    CinemachineBasicMultiChannelPerlin Noise;
-
     public Animator ani;
     public static bool BerriondoMode = false;
 
     public Slider stamina;
-
-    public static int Arepas = 10;
 
     public AudioSource son;
     public AudioClip[] sonidos;
@@ -30,9 +22,7 @@ public class Recolectable : MonoBehaviour
 
     private void Start()
     {
-
         Guaro = 0;
-        Noise = Cam.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     void Update()
@@ -86,16 +76,15 @@ public class Recolectable : MonoBehaviour
         {
             BerriondoMode = !BerriondoMode;
             
-            if (Guaro >= 1 && BerriondoMode == true)
+            if (Guaro == 3 && BerriondoMode == true)
             {
-                // ani.SetBool("grito", true);
+                ani.SetBool("grito", true);
                 //ani.SetBool("grito", false);
                 //StartCoroutine(delay());
-                Noise.m_AmplitudeGain = 1;
+
             }
             else
-                Noise.m_AmplitudeGain = 0;
-            //  ani.SetBool("grito", true);
+                return;
         }
         
 
@@ -104,7 +93,7 @@ public class Recolectable : MonoBehaviour
         //    ani.SetTrigger("Grito");
         //    grito = 0;// hacer que solo pueda gritar una vez cada vez que tenga los 4 de guaro
         //}
-        //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
+        //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daï¿½o
         //{
         //    arepa[i].gameObject.SetActive(true);
         //    int var = i;
