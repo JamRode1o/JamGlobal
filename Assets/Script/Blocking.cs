@@ -13,7 +13,6 @@ using UnityEngine;
             if (other.tag == "Player")
             {
                 InvokeRepeating("SpawnBlock", 0.5f, 0);
-                Debug.Log("here");
                 Destroy(gameObject, 5);
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }
