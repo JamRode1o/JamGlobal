@@ -33,7 +33,7 @@ public class FireBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        print("Colisione");
+        //print("Colisione");
         if(other.tag == "Player")
             Destroy(gameObject);
     }
