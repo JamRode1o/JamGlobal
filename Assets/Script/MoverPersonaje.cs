@@ -187,15 +187,16 @@ public class MoverPersonaje : MonoBehaviour
         TAtaque += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
-            arma.SetActive(true);
-            //atk.SetActive(true);
-            isAttacking = true;
-            StartCoroutine(ResetAttackingBool());
+           
             if (TAtaque >= Spam)
             {
+                arma.SetActive(true);
+                //atk.SetActive(true);
+                isAttacking = true;
+                StartCoroutine(ResetAttackingBool());
                 TAtaque = 0;
+                ani.SetBool("Ataque", true);
             }
-            ani.SetBool("Ataque", true);
             if(time > 5)
             {
                 son.PlayOneShot(sonidoAtk[rando()]);
