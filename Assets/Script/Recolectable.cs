@@ -135,7 +135,7 @@ public class Recolectable : MonoBehaviour
         //    }
         //}
 
-        if(other.tag=="Arepa")
+        if(other.tag=="Arepa" || other.tag=="ArepaUp")
             other.gameObject.SetActive(false);
 
         if (other.tag == "Enemy")

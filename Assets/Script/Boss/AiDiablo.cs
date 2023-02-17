@@ -139,7 +139,7 @@ public class AiDiablo : MonoBehaviour {
     void SpawnGoblins()
     {
         anim.SetBool("Walk", false);
-        if (cantGobblins >= 2)
+        if (cantGobblins >= 1)
         {
             randomAtack();
         }
