@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Recolectable : MonoBehaviour
 {
+    [SerializeReference] Image[] arepa= new Image[10];// = new List<Image>();
     [SerializeField] GameObject[] guaro = new GameObject[4];
     [SerializeField] GameObject perder, ImagenBerriondo;
     public static float Guaro;
     float grito;
 
+    [SerializeField] ChromaticAberration cro;
+    [SerializeField] PostProcessVolume pos;
+
     public Animator ani;
     public static bool BerriondoMode = false;
 
-    public Slider stamina;
+
+    public static int Arepas = 10;
 
     public AudioSource son;
     public AudioClip[] sonidos;
@@ -27,7 +33,7 @@ public class Recolectable : MonoBehaviour
 
     void Update()
     {
-
+       
        
         if(MoverPersonaje.run == false)
         {
@@ -76,15 +82,16 @@ public class Recolectable : MonoBehaviour
         {
             BerriondoMode = !BerriondoMode;
             
-            if (Guaro == 3 && BerriondoMode == true)
+            if (Guaro >= 1 && BerriondoMode == true)
             {
-                ani.SetBool("grito", true);
+                //ani.SetBool("grito", true);
                 //ani.SetBool("grito", false);
                 //StartCoroutine(delay());
-
+               // pos.GetComponent<ChromaticAberration>().intensity.Override(1);
             }
-            else
-                return;
+            //else
+               
+            // ani.SetBool("grito", true);
         }
         
 
@@ -93,7 +100,7 @@ public class Recolectable : MonoBehaviour
         //    ani.SetTrigger("Grito");
         //    grito = 0;// hacer que solo pueda gritar una vez cada vez que tenga los 4 de guaro
         //}
-        //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daï¿½o
+        //for (int i = 0; i < Arepas; i++) // organizar para que la vida se apague de manera correcta cuando recibe el daño
         //{
         //    arepa[i].gameObject.SetActive(true);
         //    int var = i;

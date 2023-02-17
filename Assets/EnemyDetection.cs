@@ -17,7 +17,6 @@ public class EnemyDetection : MonoBehaviour
 
             if (Recolectable.BerriondoMode == true)
             {
-               // Recolectable.Guaro -= 1;
                 other.GetComponent<EnemyLife>().TakeDamage(4);// EnemyLifeReference.TakeDamage(2);
                 other.GetComponent<Animator>().SetTrigger("Hit");
 

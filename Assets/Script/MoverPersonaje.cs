@@ -7,21 +7,14 @@ public class MoverPersonaje : MonoBehaviour
 {
     public static bool run = false;
 
-    //public Slider stamina;
-   // public Animator anim;
     public AudioSource son;
     public AudioClip[] sonidoAtk;
 
-    public float velocidadMovimiento = 7;
-    public float velocidadRotacion = 200.0f;
-    public float velCorrer;
 
     [SerializeField] GameObject BloqueoI, arma;
-    [SerializeField] Slider BloqueoS;
 
     [SerializeField] float TAtaque, Spam;
 
-    Rigidbody rb;
 
     bool Movent;
     float time = 6;
@@ -48,7 +41,6 @@ public class MoverPersonaje : MonoBehaviour
     private void Start()
     {
         Player = GetComponent<CharacterController>();
-        // rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -57,28 +49,25 @@ public class MoverPersonaje : MonoBehaviour
 
         time += Time.deltaTime;
         Movimiento();
-        tiempo += Time.deltaTime;
+       // tiempo += Time.deltaTime;
 
-        if (Correr == false && cansado == false)
-            Stamina.value += Time.deltaTime;
-        //else if(cansado == true && ) // hacer que no se llene la barra de correr 
+       
         if (Stamina.value <= 0)
         {
             cansado = true;
             tiempo += Time.deltaTime;
 
-            if (tiempo >= 10)
+            if (tiempo >= 3)
             {
                 cansado = false;
                 tiempo = 0;
             }
         }
+         if (Correr == false && cansado == false)
+            Stamina.value += Time.deltaTime;
         Bloqueo();
 
         Ataque();
-
-        BloqueoS.value += Time.deltaTime * 0.2f;
-
     }
 
     void Movimiento()
@@ -86,7 +75,7 @@ public class MoverPersonaje : MonoBehaviour
         x = Input.GetAxis("Vertical");
         z = Input.GetAxis("Horizontal");
         direccion = new Vector3(z, 0, x).normalized;
-        // rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg ;
+
         rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
         if (direccion.magnitude > 0)
@@ -96,7 +85,7 @@ public class MoverPersonaje : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angulo, 0);
 
             MovDir = Quaternion.Euler(0, rotacion, 0) * Vector3.forward;
-            //Player.SimpleMove(direccion * Speed);
+
             Player.SimpleMove(MovDir.normalized * Speed);
 
             if (Input.GetKey(KeyCode.Space) && cansado == false)
@@ -105,8 +94,7 @@ public class MoverPersonaje : MonoBehaviour
                 Stamina.value -= Time.deltaTime;
                 Player.SimpleMove(MovDir.normalized * Speed);
                 ani.SetBool("Correr", true);
-                // ani.SetTrigger("Correr");
-                
+
             }
             else
             {
