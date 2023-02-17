@@ -31,7 +31,7 @@ public class GoblinDistance : MonoBehaviour
         transform.LookAt(target);
         float distancePlayer = Vector3.Distance(transform.position, target.position);
 
-        
+
 
         if (distancePlayer <= 5f)
         {
