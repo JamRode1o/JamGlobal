@@ -50,7 +50,14 @@ public class Health : MonoBehaviour
         {
             return;
         }
-        playerHealth -= 1;
+
+        if (MoverPersonaje.Block == true)
+        {
+            playerHealth -= 0;
+            MoverPersonaje.bloqueo = false;
+        }
+        else
+            playerHealth -= 1;
         if (DamageTaken != null)
         {
             DamageTaken();

@@ -117,7 +117,6 @@ public class AiDiablo : MonoBehaviour {
 
     void SpawnFire()
     {
-        print("proceso de fuego");
         anim.SetBool("Walk", false);
         agent.isStopped = true;
         anim.SetBool("FireBullet", true);
@@ -126,7 +125,6 @@ public class AiDiablo : MonoBehaviour {
 
     void SpawnFireAnim()
     {
-        print("voy a tirar fuego");
         AudioSource.PlayClipAtPoint(fireSound, Camera.main.transform.position, 0.1f);
         Instantiate(fire, pointFire.transform.position, Quaternion.identity);
         anim.SetBool("FireBullet", false);
@@ -140,11 +138,9 @@ public class AiDiablo : MonoBehaviour {
 
     void SpawnGoblins()
     {
-        print("Estoy spawneando goblins");
         anim.SetBool("Walk", false);
-        if (cantGobblins >= 6)
+        if (cantGobblins >= 2)
         {
-            print("No generaré más enanos");
             randomAtack();
         }
         else
@@ -182,7 +178,6 @@ public class AiDiablo : MonoBehaviour {
     public void SpawnGoblinsAnim()
     {
         
-        print("spawn Duendes");
         
             for (int i = 0; i < points.Length; i++)
             {
@@ -203,13 +198,13 @@ public class AiDiablo : MonoBehaviour {
     void GoToPlayer()
     {
         anim.SetBool("Stop", false);
-        print("voy donde el player");
+
         agent.isStopped = false;
         anim.SetBool("Walk", true);
         anim.SetBool("FireBullet", false);
        // AudioSource.PlayClipAtPoint(moveBossSound, Camera.main.transform.position, 0.2f);
         
-        agent.SetDestination(target.position);
+        agent.SetDestination(target.position - new Vector3(2,0,2));
     }
 
     void DistancePlayer()
@@ -222,7 +217,6 @@ public class AiDiablo : MonoBehaviour {
 
     IEnumerator WaitAndEjecute(float time, Action action)
     {
-        Debug.Log("estoy dentro de waitAndEjecute");
         agent.isStopped = true;
         anim.SetBool("Stop", true);
         yield return new WaitForSecondsRealtime(time);
@@ -231,7 +225,6 @@ public class AiDiablo : MonoBehaviour {
 
     void randomAtack()
     {
-        Debug.Log("Estoy en el random Attack");
         
             int random = UnityEngine.Random.Range(0, 4);
 
