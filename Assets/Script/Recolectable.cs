@@ -19,7 +19,6 @@ public class Recolectable : MonoBehaviour
     public Animator ani;
     public static bool BerriondoMode = false;
 
-    public Slider stamina;
 
     public static int Arepas = 10;
 
