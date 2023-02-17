@@ -13,6 +13,7 @@ public class LifeEnemy : MonoBehaviour
     private AiDiablo aiDiablo;
     public GameObject CanvasWin;
     public Image lifeDiablo;
+    public GameObject CanvaslifeBoss;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class LifeEnemy : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         aiDiablo = gameObject.GetComponent<AiDiablo>();
         CanvasWin.SetActive(false);
+        CanvaslifeBoss.SetActive(true);
     }
 
     // Update is called once per frame
