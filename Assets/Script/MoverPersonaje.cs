@@ -7,8 +7,6 @@ public class MoverPersonaje : MonoBehaviour
 {
     public static bool run = false;
 
-    //public Slider stamina;
-   // public Animator anim;
     public AudioSource son;
     public AudioClip[] sonidoAtk;
 
@@ -17,7 +15,6 @@ public class MoverPersonaje : MonoBehaviour
 
     [SerializeField] float TAtaque, Spam;
 
-    Rigidbody rb;
 
     bool Movent;
     float time = 6;
@@ -44,7 +41,6 @@ public class MoverPersonaje : MonoBehaviour
     private void Start()
     {
         Player = GetComponent<CharacterController>();
-        // rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -72,8 +68,6 @@ public class MoverPersonaje : MonoBehaviour
         Bloqueo();
 
         Ataque();
-
-        Debug.Log(tiempo);
     }
 
     void Movimiento()
