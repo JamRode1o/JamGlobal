@@ -31,9 +31,7 @@ public class Controller : MonoBehaviour
         if(Correr == false  && cansado == false)
         {
             Stamina.value += Time.deltaTime;
-            Debug.Log("Estoy llenando");
         }
-        //else if(cansado == true && ) // hacer que no se llene la barra de correr 
         if (Stamina.value <= 0)
         {
             cansado = true;
@@ -55,7 +53,6 @@ public class Controller : MonoBehaviour
         x = Input.GetAxis("Vertical");
         z = Input.GetAxis("Horizontal");
         direccion = new Vector3(z, 0, x).normalized;
-       // rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg ;
         rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
         if (direccion.magnitude > 0) 
@@ -63,15 +60,10 @@ public class Controller : MonoBehaviour
             angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotacion, ref giro, 0);
             transform.rotation = Quaternion.Euler(0, angulo, 0);
             Vector3 MovDir = Quaternion.Euler(0, rotacion, 0)* Vector3.forward;
-            //Player.SimpleMove(direccion * Speed);
             Player.SimpleMove(MovDir.normalized * Speed);
         }
-        if ((x != 0 || z != 0) && Correr == false)
-            ani.SetBool("Caminar", true);
-        else
-            ani.SetBool("Caminar", false);
 
-        if (Input.GetKey(KeyCode.Space) &&  cansado == false)//Stamina.value > 0 && cansado == false)
+        if (Input.GetKey(KeyCode.Space) &&  cansado == false)
         {
             Correr = true;
             Player.SimpleMove(new Vector3(0, 0, x).normalized * run);
@@ -83,5 +75,10 @@ public class Controller : MonoBehaviour
             Correr = false;
             ani.SetBool("Correr", false);
         }
+
+        if ((x != 0 || z != 0) && Correr == false)
+            ani.SetBool("Caminar", true);
+        else
+            ani.SetBool("Caminar", false);
     }
 }

@@ -6,16 +6,17 @@ using UnityEngine.UI;
 public class MoverPersonaje : MonoBehaviour
 {
     public static bool run = false;
-
+    public static bool Block,bloqueo;
     public AudioSource son;
     public AudioClip[] sonidoAtk;
-    
+
 
     [SerializeField] GameObject BloqueoI, arma;
-    [SerializeField] Slider BloqueoS;
 
     [SerializeField] float TAtaque, Spam;
 
+
+    bool Movent;
     float time = 6;
 
     Vector3 vely;
@@ -35,11 +36,12 @@ public class MoverPersonaje : MonoBehaviour
     CharacterController Player;
     Vector3 direccion,MovDir;
 
-    float x, z, tiempo, rotacion, angulo;
-    bool Correr , cansado = false, Movent;
+    float x, z, tiempo, rotacion, angulo,TiempoBloqueo;
+    bool Correr , cansado = false;
     private void Start()
     {
         Player = GetComponent<CharacterController>();
+        bloqueo = true;
     }
 
     private void Update()
@@ -48,28 +50,25 @@ public class MoverPersonaje : MonoBehaviour
 
         time += Time.deltaTime;
         Movimiento();
-        tiempo += Time.deltaTime;
+       // tiempo += Time.deltaTime;
 
-        if (Correr == false && cansado == false)
-            Stamina.value += Time.deltaTime;
-
+       
         if (Stamina.value <= 0)
         {
             cansado = true;
             tiempo += Time.deltaTime;
 
-            if (tiempo >= 10)
+            if (tiempo >= 3)
             {
                 cansado = false;
                 tiempo = 0;
             }
         }
+         if (Correr == false && cansado == false)
+            Stamina.value += Time.deltaTime;
         Bloqueo();
 
         Ataque();
-
-        BloqueoS.value += Time.deltaTime * 0.2f;
-
     }
 
     void Movimiento()
@@ -77,15 +76,17 @@ public class MoverPersonaje : MonoBehaviour
         x = Input.GetAxis("Vertical");
         z = Input.GetAxis("Horizontal");
         direccion = new Vector3(z, 0, x).normalized;
+
         rotacion = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
-        if (direccion.magnitude > 0)
+        if (direccion.magnitude > 0 && Movent==true)
         {
 
             angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotacion, ref giro, 0);
             transform.rotation = Quaternion.Euler(0, angulo, 0);
 
             MovDir = Quaternion.Euler(0, rotacion, 0) * Vector3.forward;
+
             Player.SimpleMove(MovDir.normalized * Speed);
 
             if (Input.GetKey(KeyCode.Space) && cansado == false)
@@ -93,7 +94,8 @@ public class MoverPersonaje : MonoBehaviour
                 Correr = true;
                 Stamina.value -= Time.deltaTime;
                 Player.SimpleMove(MovDir.normalized * Speed);
-                ani.SetBool("Correr", true);               
+                ani.SetBool("Correr", true);
+
             }
             else
             {
@@ -152,17 +154,32 @@ public class MoverPersonaje : MonoBehaviour
 
     void Bloqueo()
     {
-        if (Input.GetKey(KeyCode.E))
+
+        TiempoBloqueo += Time.deltaTime;
+
+        if (TiempoBloqueo >= 5)
+            bloqueo = true;
+        if (Input.GetButton("Fire2")&& bloqueo == true)
         {
             Movent = false;
-            BloqueoI.gameObject.SetActive(true);
+            ani.SetBool("Bloque", true);
+            Block = true;
+            TiempoBloqueo = 0;
+            //BloqueoI.gameObject.SetActive(true);
         }
         else
         {
             Movent = true;
-            BloqueoI.gameObject.SetActive(false);
-          //  BloqueoS.value += Time.deltaTime;
+            ani.SetBool("Bloque", false);
+            Block = false;
+            // BloqueoI.gameObject.SetActive(false);
+            //  BloqueoS.value += Time.deltaTime;
         }
+
+        if (bloqueo == true)
+            BloqueoI.SetActive(true);
+        else
+            BloqueoI.SetActive(false);
     }
 
     void Ataque()
@@ -170,15 +187,16 @@ public class MoverPersonaje : MonoBehaviour
         TAtaque += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
-            arma.SetActive(true);
-            //atk.SetActive(true);
-            isAttacking = true;
-            StartCoroutine(ResetAttackingBool());
+           
             if (TAtaque >= Spam)
             {
+                arma.SetActive(true);
+                //atk.SetActive(true);
+                isAttacking = true;
+                StartCoroutine(ResetAttackingBool());
                 TAtaque = 0;
+                ani.SetBool("Ataque", true);
             }
-            ani.SetBool("Ataque", true);
             if(time > 5)
             {
                 son.PlayOneShot(sonidoAtk[rando()]);

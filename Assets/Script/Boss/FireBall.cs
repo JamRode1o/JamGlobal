@@ -23,7 +23,7 @@ public class FireBall : MonoBehaviour
     void Update()
     {
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        transform.position = Vector3.MoveTowards(transform.position, target.position,step );
 
         time += Time.deltaTime;
         if (time >= Rando())
@@ -33,7 +33,7 @@ public class FireBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        print("Colisione");
+        //print("Colisione");
         if(other.tag == "Player")
             Destroy(gameObject);
     }
